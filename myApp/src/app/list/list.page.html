@@ -1,0 +1,27 @@
+<ion-header>
+    <ion-toolbar>
+        <ion-buttons slot="start">
+            <ion-menu-button></ion-menu-button>
+        </ion-buttons>
+        <ion-title>
+            Desenhos
+        </ion-title>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content>
+    <ion-list *ngFor="let desenho of desenhos">
+        <ion-item [href]="'/desenhodetalhe/' + desenho.id" routerDirection="forward">
+            <ion-label>{{desenho.nomeTecido}}</ion-label>
+        </ion-item>
+    </ion-list>
+    <ion-fab vertical="bottom" horizontal="end" slot="fixed" class="">
+        <ion-fab-button color="success" (click)="newDesenho()">
+          <ion-icon name="md-add"></ion-icon>
+        </ion-fab-button>
+      </ion-fab>
+</ion-content>
+
+<ion-footer>
+    <p>Versão 1.1</p>
+</ion-footer>

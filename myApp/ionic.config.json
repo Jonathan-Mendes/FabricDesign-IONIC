@@ -1,0 +1,7 @@
+{
+  "name": "Fabric Design",
+  "integrations": {
+    "cordova": {}
+  },
+  "type": "angular"
+}
