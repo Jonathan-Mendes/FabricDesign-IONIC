@@ -16,7 +16,6 @@ export class AuthService {
   getCurrent(){
     return firebase.auth().currentUser;
   }
-  
 
   doRegister(value){
    return new Promise<any>((resolve, reject) => {

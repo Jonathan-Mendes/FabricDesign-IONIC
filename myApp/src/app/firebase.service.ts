@@ -4,6 +4,7 @@ import * as firebase from 'firebase/app';
 import 'firebase/storage';
 import { AngularFireAuth } from '@angular/fire/auth';
 import { Desenho } from './desenho';
+import { User } from './user';
 
 @Injectable({
   providedIn: 'root'
@@ -16,6 +17,21 @@ export class FirebaseService {
     public afs: AngularFirestore,
     public afAuth: AngularFireAuth
   ) { }
+
+  getName(Uid){
+    let user = new User;
+      return new Promise<User>((resolve, reject) => {
+            this.snapshotChangesSubscription = this.afs.doc<any>('usuarios/' + Uid).valueChanges()
+            .subscribe(snapshots => {
+              user.nome = snapshots.nome;
+              user.foto = snapshots.foto;
+              user.admin = snapshots.admin;
+              resolve(user);
+            }, err => {
+              reject(err)
+            })
+        })
+    }
 
   search(cat):Array<Desenho>{
     let desenhos: Desenho[] = [];

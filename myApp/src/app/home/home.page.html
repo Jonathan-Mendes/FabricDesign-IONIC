@@ -25,13 +25,13 @@
   <ion-button expand="block" fill="outline">Passadeiras
     <ion-ripple-effect></ion-ripple-effect>
   </ion-button>
-  <ion-button expand="block" fill="outline" (click)="search('almofadas')">Almofadas
+  <ion-button expand="block" fill="outline">Almofadas
     <ion-ripple-effect></ion-ripple-effect>
   </ion-button>
-  <ion-button expand="block" fill="outline" routerLink="/list">Ver Todos
+  <ion-button expand="block" color="success"  routerLink="/list">Ver Todos
     <ion-ripple-effect></ion-ripple-effect>
   </ion-button>
-  <ion-fab vertical="bottom" horizontal="end" slot="fixed" class="">
+  <ion-fab vertical="bottom" horizontal="end" slot="fixed" *ngIf="user.admin">
     <ion-fab-button color="success" (click)="newDesenho()">
       <ion-icon name="md-add"></ion-icon>
     </ion-fab-button>

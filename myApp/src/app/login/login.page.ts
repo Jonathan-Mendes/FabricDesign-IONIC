@@ -10,13 +10,18 @@ import { AlertController } from '@ionic/angular';
 })
 export class LoginPage implements OnInit {
 
+  public current: any;
   public user = [{
     email: '',
     password: ''
   }];
 
-  constructor(public router: Router, public firebase: FirebaseService, public auth: AuthService, public alertController: AlertController) {
-  }
+  constructor(
+    public router: Router,
+    public firebase: FirebaseService,
+    public auth: AuthService, 
+    public alertController: AlertController
+    ) {}
   
   ngOnInit() {
     this.auth.doLogout();
@@ -24,10 +29,11 @@ export class LoginPage implements OnInit {
 
   sigIn() {
     this.auth.doLogin(this.user)
-    if (this.auth.getCurrent()) {
+    this.current = this.auth.getCurrent();
+    if (this.current) {
       this.router.navigate(['home']);
     } else {
-      this.presentAlertConfirm();
+      // this.presentAlertConfirm();
     }
   }
 
@@ -47,4 +53,6 @@ export class LoginPage implements OnInit {
 
     await alert.present();
   }
+
+
 }

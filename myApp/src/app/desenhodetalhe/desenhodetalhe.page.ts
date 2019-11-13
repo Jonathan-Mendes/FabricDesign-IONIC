@@ -19,7 +19,6 @@ export class DesenhodetalhePage implements OnInit {
     this.desenho = new Desenho;
     this.id = this.router.snapshot.paramMap.get('id');
     this.getTask(this.id);
-    console.log(this.desenho);
   }
 
   delete(){

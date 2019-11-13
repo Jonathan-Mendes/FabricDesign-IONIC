@@ -8,6 +8,15 @@
       </ion-header>
       <ion-content>
         <ion-list>
+          <ion-item>
+            <ion-avatar slot="start">
+              <img
+                src="https://firebasestorage.googleapis.com/v0/b/fabric-design-145ac.appspot.com/o/Photo%20Users%2Fdefault-perfil.jpg?alt=media&token=7e71e16c-60c2-49ee-bb62-beb95337a0ff">
+            </ion-avatar>
+            <ion-label></ion-label>
+          </ion-item>
+        </ion-list>
+        <ion-list>
           <ion-menu-toggle auto-hide="false" *ngFor="let p of appPages">
             <ion-item [routerDirection]="'root'" [routerLink]="[p.url]">
               <ion-icon slot="start" [name]="p.icon"></ion-icon>
