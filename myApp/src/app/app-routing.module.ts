@@ -17,15 +17,15 @@ const routes: Routes = [
   },
   { path: 'newdesenho', 
     loadChildren: () => import('./newdesenho/newdesenho.module').then(m => m.NewdesenhoPageModule)
-    // loadChildren: './newdesenho/newdesenho.module#NewdesenhoPageModule' 
   },
-  { path: 'desenhodetalhe',
-  loadChildren: () => import('./desenhodetalhe/desenhodetalhe.module').then(m => m.DesenhodetalhePageModule)
-  //  loadChildren: './desenhodetalhe/desenhodetalhe.module#DesenhodetalhePageModule' }
+  { path: 'newdesenho/:id', 
+    loadChildren: () => import('./newdesenho/newdesenho.module').then(m => m.NewdesenhoPageModule)
   },
   { path: 'desenhodetalhe/:id',
-  loadChildren: () => import('./desenhodetalhe/desenhodetalhe.module').then(m => m.DesenhodetalhePageModule)
-  //  loadChildren: './desenhodetalhe/desenhodetalhe.module#DesenhodetalhePageModule' }
+    loadChildren: () => import('./desenhodetalhe/desenhodetalhe.module').then(m => m.DesenhodetalhePageModule)
+  },
+  { path: 'desenhodetalhe/:id',
+    loadChildren: () => import('./desenhodetalhe/desenhodetalhe.module').then(m => m.DesenhodetalhePageModule)
   }
 ];
 

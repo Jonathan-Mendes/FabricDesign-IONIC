@@ -97,12 +97,12 @@
     </ion-item>
   </ion-card>
   <ion-fab vertical="bottom" horizontal="end" slot="fixed" class="">
-    <ion-fab-button color="tertiary" (click)="newDesenho()">
-      <ion-icon name="md-create"></ion-icon>
+    <ion-fab-button color="tertiary">
+      <ion-icon name="md-create" (click)="edit()"></ion-icon>
     </ion-fab-button>
   </ion-fab>
   <ion-fab vertical="bottom" horizontal="start" slot="fixed" class="">
-    <ion-fab-button color="danger" (click)="newDesenho()">
+    <ion-fab-button color="danger" (click)="delete()">
       <ion-icon name="md-trash"></ion-icon>
     </ion-fab-button>
   </ion-fab>

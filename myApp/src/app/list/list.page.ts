@@ -17,12 +17,7 @@ export class ListPage implements OnInit {
   }
 
   ngOnInit() {
-    
     this.desenhos = this.firebase.getTasks();
-  }
-
-  navigate(item) {
-    this.router.navigate(['/list', JSON.stringify(item)]);
   }
 
   newDesenho(){ 

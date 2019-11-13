@@ -1,8 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Desenho } from '../desenho'
 import { FirebaseService } from '../firebase.service';
-
 @Component({
   selector: 'app-desenhodetalhe',
   templateUrl: './desenhodetalhe.page.html',
@@ -14,13 +13,26 @@ export class DesenhodetalhePage implements OnInit {
   public desenho: Desenho;
   public snapshotChangesSubscription: any;
 
-  constructor(public router: ActivatedRoute, public firebase: FirebaseService) { }
+  constructor(public rota: Router, public router: ActivatedRoute, public firebase: FirebaseService) { }
 
   ngOnInit() {
     this.desenho = new Desenho;
     this.id = this.router.snapshot.paramMap.get('id');
     this.getTask(this.id);
     console.log(this.desenho);
+  }
+
+  delete(){
+    try{
+      this.firebase.deleteTask(this.id);
+      this.rota.navigate(['list']);
+    } catch(e){
+      console.log('Não foi possivel excluir');
+    }
+  }
+
+  edit(){
+      this.rota.navigate(['/newdesenho/' + this.id ]);
   }
 
   getTask(taskId) {

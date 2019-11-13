@@ -99,14 +99,27 @@ export class FirebaseService {
     this.snapshotChangesSubscription.unsubscribe();
   }
 
-  updateTask() {
+  updateTask(taskId, newDesenho) {
     return new Promise<any>((resolve, reject) => {
-      let currentUser = firebase.auth().currentUser;
-      this.afs.collection('desenhos').doc('1').set({
-        teste: '33'
+      this.afs.collection('desenhos').doc(taskId).set({ 
+        tecido: newDesenho[0].nomeTecido,
+        desenho: newDesenho[0].desenho,
+        batida: newDesenho[0].tipoBatida,
+        batidaUnica: newDesenho[0].batidaUnica,
+        batidaZ1: newDesenho[0].batidaZ1,
+        batidaZ2: newDesenho[0].batidaZ3,
+        batidaZ3: newDesenho[0].batidaZ3,
+        tipoPre: newDesenho[0].tipoPre,
+        preCorUnica: newDesenho[0].preCorUnica,
+        preCorMult1: newDesenho[0].preCorMult1,
+        preCorMult2: newDesenho[0].preCorMult2,
+        preCorMult3: newDesenho[0].preCorMult3,
+        preCorMult4: newDesenho[0].preCorMult4,
+        do: newDesenho[0].doD,
+        pre: newDesenho[0].pre,
+        tear: newDesenho[0].tear
       })
         .then(
-
           res => resolve(res),
           err => reject(err)
         )
@@ -115,8 +128,7 @@ export class FirebaseService {
 
   deleteTask(taskKey) {
     return new Promise<any>((resolve, reject) => {
-      let currentUser = firebase.auth().currentUser;
-      this.afs.collection('people').doc(currentUser.uid).collection('tasks').doc(taskKey).delete()
+      this.afs.collection('desenhos').doc(taskKey).delete()
         .then(
           res => resolve(res),
           err => reject(err)
