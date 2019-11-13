@@ -17,6 +17,35 @@ export class FirebaseService {
     public afAuth: AngularFireAuth
   ) { }
 
+  search(cat):Array<Desenho>{
+    let desenhos: Desenho[] = [];
+    let query = firebase.firestore().collection('desenhos').where("categoria", "==", cat);
+    query.get().then(function (querySnapshot) {
+      querySnapshot.forEach(function (doc) {
+        let desenho = new Desenho;
+        desenho.id = doc.id;
+        desenho.nomeTecido = doc.data().tecido;
+        desenho.desenho = doc.data().desenho;
+        desenho.tipoBatida = doc.data().batida;
+        desenho.batidaUnica = doc.data().batidaUnica;
+        desenho.batidaZ1 = doc.data().batidaZ1;
+        desenho.batidaZ2 = doc.data().batidaZ2;
+        desenho.batidaZ3 = doc.data().batidaZ3;
+        desenho.doD = doc.data().do;
+        desenho.tipoPre= doc.data().tipoPre,
+        desenho.preCorUnica= doc.data().preCorUnica,
+        desenho.preCorMult1= doc.data().preCorMult1;
+        desenho.preCorMult2= doc.data().preCorMult2;
+        desenho.preCorMult3= doc.data().preCorMult3;
+        desenho.preCorMult4= doc.data().preCorMult4;
+        desenho.tear = doc.data().tear;
+        desenho.categoria = doc.data().categoria;
+        desenhos.push(desenho);
+      });
+   });
+   return desenhos;
+  }
+
   getTasks(): Array<Desenho> {
     let desenhos: Desenho[] = [];
     this.afs.firestore.collection("desenhos").get().then(function (querySnapshot) {
@@ -38,6 +67,7 @@ export class FirebaseService {
         desenho.preCorMult3= doc.data().preCorMult3,
         desenho.preCorMult4= doc.data().preCorMult4,
         desenho.tear = doc.data().tear;
+        desenho.categoria = doc.data().categoria;
         desenhos.push(desenho);
       });
     });
@@ -95,7 +125,8 @@ export class FirebaseService {
         preCorMult4: newDesenho[0].preCorMult4,
         do: newDesenho[0].doD,
         pre: newDesenho[0].pre,
-        tear: newDesenho[0].tear
+        tear: newDesenho[0].tear,
+        categoria: newDesenho[0].categoria
       })
         .then(
           res => resolve(res),
@@ -133,7 +164,8 @@ export class FirebaseService {
         preCorMult4: newDesenho[0].preCorMult4,
         do: newDesenho[0].doD,
         pre: newDesenho[0].pre,
-        tear: newDesenho[0].tear
+        tear: newDesenho[0].tear,
+        categoria: newDesenho[0].categoria
       }).then(
         res => resolve(res),
         err => reject(err)

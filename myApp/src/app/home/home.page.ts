@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { NavController } from '@ionic/angular';
 import { Router } from '@angular/router';
-
+import { FirebaseService } from '../firebase.service';
+import { Desenho } from './../desenho';
 @Component({
   selector: 'app-home',
   templateUrl: 'home.page.html',
@@ -10,8 +11,9 @@ import { Router } from '@angular/router';
 
 export class HomePage implements OnInit {
  
- 
-  constructor(public navCtrl: NavController, public router: Router) { }
+  public query: Desenho[] = []; 
+
+  constructor(public navCtrl: NavController, public router: Router, public firebase: FirebaseService) { }
  
   ngOnInit() {
     
@@ -19,6 +21,11 @@ export class HomePage implements OnInit {
  
   newDesenho(){ 
     this.router.navigate(['newdesenho']);
+  }
+
+  search(cat){
+    this.query =  this.firebase.search(cat);
+    console.log(this.query);
   }
  
 }
