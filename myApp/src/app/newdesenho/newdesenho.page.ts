@@ -47,7 +47,6 @@ export class NewdesenhoPage implements OnInit {
     if(this.id){
       this.verificaDesenho(this.desenho);
       this.firebase.updateTask(this.id, this.desenho);
-      location.reload();
     } else{
       this.firebase.createTask(this.desenho);
     }

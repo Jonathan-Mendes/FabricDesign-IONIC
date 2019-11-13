@@ -44,28 +44,6 @@ export class FirebaseService {
     return desenhos;
   }
 
-  // getTask(id): Array<Desenho> {
-  //   let desenhos: Desenho[] = [];
-  //   this.afs.firestore.collection("desenhos").doc(id).get().then(function (doc) {
-  //     if (doc.exists) {
-  //       let desenho = new Desenho;
-  //       desenho.id = doc.id;
-  //       desenho.nomeTecido = doc.data().tecido;
-  //       desenho.desenho = doc.data().desenho;
-  //       desenho.tipoBatida = doc.data().batida;
-  //       desenho.batidaUnica = doc.data().batidaUnica;
-  //       desenho.batidaZ1 = doc.data().batidaZ1;
-  //       desenho.batidaZ2 = doc.data().batidaZ2;
-  //       desenho.batidaZ3 = doc.data().batidaZ3;
-  //       desenho.doD = doc.data().do;
-  //       desenho.pre = doc.data().pre;
-  //       desenho.tear = doc.data().tear;
-  //       desenhos.push(desenho);
-  //     }
-  //   });
-  //   return desenhos;
-  // }
-
   getTask(taskId){
     let desenho = new Desenho;
     return new Promise<Desenho>((resolve, reject) => {
@@ -79,12 +57,12 @@ export class FirebaseService {
             desenho.batidaZ2 = snapshots.batidaZ2;
             desenho.batidaZ3 = snapshots.batidaZ3;
             desenho.doD = snapshots.do;
-            desenho.tipoPre= snapshots.tipoPre,
-            desenho.preCorUnica= snapshots.preCorUnica,
-            desenho.preCorMult1= snapshots.preCorMult1,
-            desenho.preCorMult2= snapshots.preCorMult2,
-            desenho.preCorMult3= snapshots.preCorMult3,
-            desenho.preCorMult4= snapshots.preCorMult4,
+            desenho.tipoPre = snapshots.tipoPre,
+            desenho.preCorUnica = snapshots.preCorUnica,
+            desenho.preCorMult1 = snapshots.preCorMult1,
+            desenho.preCorMult2 = snapshots.preCorMult2,
+            desenho.preCorMult3 = snapshots.preCorMult3,
+            desenho.preCorMult4 = snapshots.preCorMult4,
             desenho.tear = snapshots.tear;
             desenho.categoria = snapshots.categoria;
             resolve(desenho);
@@ -162,7 +140,6 @@ export class FirebaseService {
       )
     })
   }
-
 
   encodeImageUri(imageUri, callback) {
     var c = document.createElement('canvas');
