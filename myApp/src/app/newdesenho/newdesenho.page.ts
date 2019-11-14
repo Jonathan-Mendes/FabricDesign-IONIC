@@ -73,6 +73,7 @@ export class NewdesenhoPage implements OnInit {
     if(!desenho[0].preCorMult4){desenho[0].preCorMult4 = '';}
     if(!desenho[0].doD){desenho[0].doD = '';}
     if(!desenho[0].tear){desenho[0].tear = '';}
+    if(!desenho[0].categoria){desenho[0].categoria = '';}
   }
 
   getTask(taskId) {
@@ -94,6 +95,7 @@ export class NewdesenhoPage implements OnInit {
           this.desenho[0].preCorMult4 = snapshots.preCorMult4;
           this.desenho[0].doD = snapshots.do;
           this.desenho[0].tear = snapshots.tear;
+          this.desenho[0].categoria = snapshots.categoria;
           resolve(this.desenho);
         }, err => {
           reject(err)

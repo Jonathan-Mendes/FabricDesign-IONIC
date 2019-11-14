@@ -53,6 +53,7 @@ export class DesenhodetalhePage implements OnInit {
           this.desenho.preCorMult4 = snapshots.preCorMult4;
           this.desenho.doD = snapshots.do;
           this.desenho.tear = snapshots.tear;
+          this.desenho.categoria = snapshots.categoria;
           resolve(this.desenho);
         }, err => {
           reject(err)

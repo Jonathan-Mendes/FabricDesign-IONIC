@@ -10,28 +10,28 @@
 </ion-header>
 
 <ion-content>
-  <ion-button expand="block" fill="outline">Mantas 2.00 mts
+  <ion-button expand="block" fill="outline" (click)="search('manta200')">Mantas 2.00 mts
     <ion-ripple-effect></ion-ripple-effect>
   </ion-button>
-  <ion-button expand="block" fill="outline">Mantas 1.40 mts
+  <ion-button expand="block" fill="outline" (click)="search('manta140')">Mantas 1.40 mts
     <ion-ripple-effect></ion-ripple-effect>
   </ion-button>
-  <ion-button expand="block" fill="outline">Cortinas
+  <ion-button expand="block" fill="outline" (click)="search('cortinas')">Cortinas
     <ion-ripple-effect></ion-ripple-effect>
   </ion-button>
-  <ion-button expand="block" fill="outline">Tapetes
+  <ion-button expand="block" fill="outline" (click)="search('tapetes')">Tapetes
     <ion-ripple-effect></ion-ripple-effect>
   </ion-button>
-  <ion-button expand="block" fill="outline">Passadeiras
+  <ion-button expand="block" fill="outline" (click)="search('passadeiras')">Passadeiras
     <ion-ripple-effect></ion-ripple-effect>
   </ion-button>
-  <ion-button expand="block" fill="outline">Almofadas
+  <ion-button expand="block" fill="outline" (click)="search('almofadas')">Almofadas
     <ion-ripple-effect></ion-ripple-effect>
   </ion-button>
   <ion-button expand="block" color="success"  routerLink="/list">Ver Todos
     <ion-ripple-effect></ion-ripple-effect>
   </ion-button>
-  <ion-fab vertical="bottom" horizontal="end" slot="fixed" *ngIf="user.admin">
+  <ion-fab vertical="bottom" horizontal="end" slot="fixed">
     <ion-fab-button color="success" (click)="newDesenho()">
       <ion-icon name="md-add"></ion-icon>
     </ion-fab-button>

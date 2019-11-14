@@ -28,8 +28,9 @@ export class ListPage implements OnInit {
 
   ngOnInit() {
     this.desenhos = this.firebase.getTasks();
+    console.log(this.desenhos);
     this.user = new User; 
-    this.Uid = this.auth.getCurrent().uid;
+    // this.Uid = this.auth.getCurrent().uid;
     this.getName();
   }
 

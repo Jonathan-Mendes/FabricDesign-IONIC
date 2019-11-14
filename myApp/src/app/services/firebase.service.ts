@@ -18,7 +18,7 @@ export class FirebaseService {
     public afAuth: AngularFireAuth
   ) { }
 
-  getName(Uid) {
+  async getName(Uid) {
     return new Promise<any>((resolve, reject) => {
       this.snapshotChangesSubscription = this.afs.doc<any>('usuarios/' + Uid).valueChanges()
         .subscribe(snapshots => {
@@ -30,10 +30,10 @@ export class FirebaseService {
 
   }
 
-  search(cat): Array<Desenho> {
+  searchInput(query): Array<Desenho> {
     let desenhos: Desenho[] = [];
-    let query = firebase.firestore().collection('desenhos').where("categoria", "==", cat);
-    query.get().then(function (querySnapshot) {
+    this.afs.firestore.collection('desenhos').where("tecido", "==", query)
+    .get().then(function (querySnapshot) {
       querySnapshot.forEach(function (doc) {
         let desenho = new Desenho;
         desenho.id = doc.id;
@@ -46,8 +46,37 @@ export class FirebaseService {
         desenho.batidaZ3 = doc.data().batidaZ3;
         desenho.doD = doc.data().do;
         desenho.tipoPre = doc.data().tipoPre,
-          desenho.preCorUnica = doc.data().preCorUnica,
-          desenho.preCorMult1 = doc.data().preCorMult1;
+        desenho.preCorUnica = doc.data().preCorUnica,
+        desenho.preCorMult1 = doc.data().preCorMult1;
+        desenho.preCorMult2 = doc.data().preCorMult2;
+        desenho.preCorMult3 = doc.data().preCorMult3;
+        desenho.preCorMult4 = doc.data().preCorMult4;
+        desenho.tear = doc.data().tear;
+        desenho.categoria = doc.data().categoria;
+        desenhos.push(desenho);
+      });
+    });
+    return desenhos;
+  }
+
+  search(cat): Array<Desenho> {
+    let desenhos: Desenho[] = [];
+    this.afs.firestore.collection('desenhos').where("categoria", "==", cat)
+    .get().then(function (querySnapshot) {
+      querySnapshot.forEach(function (doc) {
+        let desenho = new Desenho;
+        desenho.id = doc.id;
+        desenho.nomeTecido = doc.data().tecido;
+        desenho.desenho = doc.data().desenho;
+        desenho.tipoBatida = doc.data().batida;
+        desenho.batidaUnica = doc.data().batidaUnica;
+        desenho.batidaZ1 = doc.data().batidaZ1;
+        desenho.batidaZ2 = doc.data().batidaZ2;
+        desenho.batidaZ3 = doc.data().batidaZ3;
+        desenho.doD = doc.data().do;
+        desenho.tipoPre = doc.data().tipoPre,
+        desenho.preCorUnica = doc.data().preCorUnica,
+        desenho.preCorMult1 = doc.data().preCorMult1;
         desenho.preCorMult2 = doc.data().preCorMult2;
         desenho.preCorMult3 = doc.data().preCorMult3;
         desenho.preCorMult4 = doc.data().preCorMult4;
@@ -74,12 +103,12 @@ export class FirebaseService {
         desenho.batidaZ3 = doc.data().batidaZ3;
         desenho.doD = doc.data().do;
         desenho.tipoPre = doc.data().tipoPre,
-          desenho.preCorUnica = doc.data().preCorUnica,
-          desenho.preCorMult1 = doc.data().preCorMult1,
-          desenho.preCorMult2 = doc.data().preCorMult2,
-          desenho.preCorMult3 = doc.data().preCorMult3,
-          desenho.preCorMult4 = doc.data().preCorMult4,
-          desenho.tear = doc.data().tear;
+        desenho.preCorUnica = doc.data().preCorUnica,
+        desenho.preCorMult1 = doc.data().preCorMult1,
+        desenho.preCorMult2 = doc.data().preCorMult2,
+        desenho.preCorMult3 = doc.data().preCorMult3,
+        desenho.preCorMult4 = doc.data().preCorMult4,
+        desenho.tear = doc.data().tear;
         desenho.categoria = doc.data().categoria;
         desenhos.push(desenho);
       });
@@ -101,12 +130,12 @@ export class FirebaseService {
           desenho.batidaZ3 = snapshots.batidaZ3;
           desenho.doD = snapshots.do;
           desenho.tipoPre = snapshots.tipoPre,
-            desenho.preCorUnica = snapshots.preCorUnica,
-            desenho.preCorMult1 = snapshots.preCorMult1,
-            desenho.preCorMult2 = snapshots.preCorMult2,
-            desenho.preCorMult3 = snapshots.preCorMult3,
-            desenho.preCorMult4 = snapshots.preCorMult4,
-            desenho.tear = snapshots.tear;
+          desenho.preCorUnica = snapshots.preCorUnica,
+          desenho.preCorMult1 = snapshots.preCorMult1,
+          desenho.preCorMult2 = snapshots.preCorMult2,
+          desenho.preCorMult3 = snapshots.preCorMult3,
+          desenho.preCorMult4 = snapshots.preCorMult4,
+          desenho.tear = snapshots.tear;
           desenho.categoria = snapshots.categoria;
           resolve(desenho);
         }, err => {

@@ -24,7 +24,7 @@
     <ion-item>
       <ion-label class="ion-text-uppercase ion-text-center">Batida</ion-label>
     </ion-item>
-    
+
 
     <div *ngIf="desenho.tipoBatida === 'zona'">
       <ion-item>
@@ -47,10 +47,10 @@
         <ion-label class="ion-text-end">{{desenho.batidaUnica}}</ion-label>
       </ion-item>
     </div>
-      
+
     <ion-item>
-        <ion-label class="ion-text-uppercase ion-text-center">Do</ion-label>
-      </ion-item>
+      <ion-label class="ion-text-uppercase ion-text-center">Do</ion-label>
+    </ion-item>
 
     <ion-item>
       <ion-label class="ion-text-uppercase">Do</ion-label>
@@ -58,44 +58,55 @@
     </ion-item>
 
     <ion-item>
-        <ion-label class="ion-text-uppercase ion-text-center">Pré</ion-label>
-      </ion-item>
+      <ion-label class="ion-text-uppercase ion-text-center">Pré</ion-label>
+    </ion-item>
 
-      <div *ngIf="desenho.tipoPre === 'multiplas'">
-        <ion-item>
-          <ion-label class="ion-text-uppercase">Cor 1</ion-label>
-          <ion-label class="ion-text-end">{{desenho.preCorMult1}}</ion-label>
-        </ion-item>
-        <ion-item>
-          <ion-label class="ion-text-uppercase">Cor 2</ion-label>
-          <ion-label class="ion-text-end">{{desenho.preCorMult2}}</ion-label>
-        </ion-item>
-        <ion-item>
-          <ion-label class="ion-text-uppercase">Cor 3</ion-label>
-          <ion-label class="ion-text-end">{{desenho.preCorMult3}}</ion-label>
-        </ion-item>
-        <ion-item>
-          <ion-label class="ion-text-uppercase">Cor 4</ion-label>
-          <ion-label class="ion-text-end">{{desenho.preCorMult4}}</ion-label>
-        </ion-item>
-      </div>
-  
-      <div *ngIf="desenho.tipoPre === 'unica'">
-        <ion-item>
-          <ion-label class="ion-text-uppercase">Única</ion-label>
-          <ion-label class="ion-text-end">{{desenho.preCorUnica}}</ion-label>
-        </ion-item>
-      </div>
+    <div *ngIf="desenho.tipoPre === 'multiplas'">
+      <ion-item>
+        <ion-label class="ion-text-uppercase">Cor 1</ion-label>
+        <ion-label class="ion-text-end">{{desenho.preCorMult1}}</ion-label>
+      </ion-item>
+      <ion-item>
+        <ion-label class="ion-text-uppercase">Cor 2</ion-label>
+        <ion-label class="ion-text-end">{{desenho.preCorMult2}}</ion-label>
+      </ion-item>
+      <ion-item>
+        <ion-label class="ion-text-uppercase">Cor 3</ion-label>
+        <ion-label class="ion-text-end">{{desenho.preCorMult3}}</ion-label>
+      </ion-item>
+      <ion-item>
+        <ion-label class="ion-text-uppercase">Cor 4</ion-label>
+        <ion-label class="ion-text-end">{{desenho.preCorMult4}}</ion-label>
+      </ion-item>
+    </div>
+
+    <div *ngIf="desenho.tipoPre === 'unica'">
+      <ion-item>
+        <ion-label class="ion-text-uppercase">Única</ion-label>
+        <ion-label class="ion-text-end">{{desenho.preCorUnica}}</ion-label>
+      </ion-item>
+    </div>
 
     <ion-item>
-        <ion-label class="ion-text-uppercase ion-text-center">Tear</ion-label>
-      </ion-item>
+      <ion-label class="ion-text-uppercase ion-text-center">Tear</ion-label>
+    </ion-item>
 
     <ion-item>
       <ion-label class="ion-text-uppercase">Tear</ion-label>
       <ion-label class="ion-text-end ion-text-uppercase">{{desenho.tear}}</ion-label>
     </ion-item>
+
+
+    <ion-item>
+      <ion-label class="ion-text-uppercase ion-text-center">Categoria</ion-label>
+    </ion-item>
+
+    <ion-item>
+      <ion-label class="ion-text-uppercase">Categoria</ion-label>
+      <ion-label class="ion-text-end ion-text-uppercase">{{desenho.categoria}}</ion-label>
+    </ion-item>
   </ion-card>
+  
   <ion-fab vertical="bottom" horizontal="end" slot="fixed">
     <ion-fab-button color="tertiary">
       <ion-icon name="md-create" (click)="edit()"></ion-icon>

@@ -29,12 +29,12 @@ export class HomePage implements OnInit {
   ngOnInit() {
     let b: any;
     this.user = new User; 
-    this.Uid = this.auth.getCurrent().uid;
-    let snapshot = this.firebase.getName(this.Uid);
-    Promise.resolve(snapshot).then(function (value) {
-       this.admin = value.admin;
-    });
-    console.log(this.admin);
+    // this.Uid = this.auth.getCurrent().uid;
+    // let snapshot = this.firebase.getName(this.Uid);
+    // console.log(snapshot);
+    // Promise.resolve(snapshot).then(function (value) {
+    //    this.user.nome = value.nome;
+    // });
   }
 
   newDesenho(){ 
@@ -42,8 +42,6 @@ export class HomePage implements OnInit {
   }
 
   search(cat){
-    this.query =  this.firebase.search(cat);
-    console.log(this.query);
-    console.log(this.admin);
+    this.router.navigate(['search/' + cat]);
   }
 }
