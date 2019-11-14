@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { FirebaseService } from '../firebase.service';
-import { Desenho } from '../desenho'; 
+import { FirebaseService } from '../services/firebase.service';
+import { Desenho } from '../model/desenho'; 
 import { Router, ActivatedRoute } from '@angular/router';
 @Component({
   selector: 'app-newdesenho',

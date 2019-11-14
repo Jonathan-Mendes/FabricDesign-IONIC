@@ -3,8 +3,8 @@ import { AngularFirestore } from '@angular/fire/firestore';
 import * as firebase from 'firebase/app';
 import 'firebase/storage';
 import { AngularFireAuth } from '@angular/fire/auth';
-import { Desenho } from './desenho';
-import { User } from './user';
+import { Desenho } from '../model/desenho';
+import { User } from '../model/user';
 
 @Injectable({
   providedIn: 'root'
@@ -18,22 +18,19 @@ export class FirebaseService {
     public afAuth: AngularFireAuth
   ) { }
 
-  getName(Uid){
-    let user = new User;
-      return new Promise<User>((resolve, reject) => {
-            this.snapshotChangesSubscription = this.afs.doc<any>('usuarios/' + Uid).valueChanges()
-            .subscribe(snapshots => {
-              user.nome = snapshots.nome;
-              user.foto = snapshots.foto;
-              user.admin = snapshots.admin;
-              resolve(user);
-            }, err => {
-              reject(err)
-            })
+  getName(Uid) {
+    return new Promise<any>((resolve, reject) => {
+      this.snapshotChangesSubscription = this.afs.doc<any>('usuarios/' + Uid).valueChanges()
+        .subscribe(snapshots => {
+          resolve(snapshots);
+        }, err => {
+          reject(err)
         })
-    }
+    })
 
-  search(cat):Array<Desenho>{
+  }
+
+  search(cat): Array<Desenho> {
     let desenhos: Desenho[] = [];
     let query = firebase.firestore().collection('desenhos').where("categoria", "==", cat);
     query.get().then(function (querySnapshot) {
@@ -48,18 +45,18 @@ export class FirebaseService {
         desenho.batidaZ2 = doc.data().batidaZ2;
         desenho.batidaZ3 = doc.data().batidaZ3;
         desenho.doD = doc.data().do;
-        desenho.tipoPre= doc.data().tipoPre,
-        desenho.preCorUnica= doc.data().preCorUnica,
-        desenho.preCorMult1= doc.data().preCorMult1;
-        desenho.preCorMult2= doc.data().preCorMult2;
-        desenho.preCorMult3= doc.data().preCorMult3;
-        desenho.preCorMult4= doc.data().preCorMult4;
+        desenho.tipoPre = doc.data().tipoPre,
+          desenho.preCorUnica = doc.data().preCorUnica,
+          desenho.preCorMult1 = doc.data().preCorMult1;
+        desenho.preCorMult2 = doc.data().preCorMult2;
+        desenho.preCorMult3 = doc.data().preCorMult3;
+        desenho.preCorMult4 = doc.data().preCorMult4;
         desenho.tear = doc.data().tear;
         desenho.categoria = doc.data().categoria;
         desenhos.push(desenho);
       });
-   });
-   return desenhos;
+    });
+    return desenhos;
   }
 
   getTasks(): Array<Desenho> {
@@ -76,13 +73,13 @@ export class FirebaseService {
         desenho.batidaZ2 = doc.data().batidaZ2;
         desenho.batidaZ3 = doc.data().batidaZ3;
         desenho.doD = doc.data().do;
-        desenho.tipoPre= doc.data().tipoPre,
-        desenho.preCorUnica= doc.data().preCorUnica,
-        desenho.preCorMult1= doc.data().preCorMult1,
-        desenho.preCorMult2= doc.data().preCorMult2,
-        desenho.preCorMult3= doc.data().preCorMult3,
-        desenho.preCorMult4= doc.data().preCorMult4,
-        desenho.tear = doc.data().tear;
+        desenho.tipoPre = doc.data().tipoPre,
+          desenho.preCorUnica = doc.data().preCorUnica,
+          desenho.preCorMult1 = doc.data().preCorMult1,
+          desenho.preCorMult2 = doc.data().preCorMult2,
+          desenho.preCorMult3 = doc.data().preCorMult3,
+          desenho.preCorMult4 = doc.data().preCorMult4,
+          desenho.tear = doc.data().tear;
         desenho.categoria = doc.data().categoria;
         desenhos.push(desenho);
       });
@@ -90,32 +87,32 @@ export class FirebaseService {
     return desenhos;
   }
 
-  getTask(taskId){
+  getTask(taskId) {
     let desenho = new Desenho;
     return new Promise<Desenho>((resolve, reject) => {
-          this.snapshotChangesSubscription = this.afs.doc<any>('desenhos/' + taskId).valueChanges()
-          .subscribe(snapshots => {
-            desenho.nomeTecido = snapshots.tecido;
-            desenho.desenho = snapshots.desenho;
-            desenho.tipoBatida = snapshots.batida;
-            desenho.batidaUnica = snapshots.batidaUnica;
-            desenho.batidaZ1 = snapshots.batidaZ1;
-            desenho.batidaZ2 = snapshots.batidaZ2;
-            desenho.batidaZ3 = snapshots.batidaZ3;
-            desenho.doD = snapshots.do;
-            desenho.tipoPre = snapshots.tipoPre,
+      this.snapshotChangesSubscription = this.afs.doc<any>('desenhos/' + taskId).valueChanges()
+        .subscribe(snapshots => {
+          desenho.nomeTecido = snapshots.tecido;
+          desenho.desenho = snapshots.desenho;
+          desenho.tipoBatida = snapshots.batida;
+          desenho.batidaUnica = snapshots.batidaUnica;
+          desenho.batidaZ1 = snapshots.batidaZ1;
+          desenho.batidaZ2 = snapshots.batidaZ2;
+          desenho.batidaZ3 = snapshots.batidaZ3;
+          desenho.doD = snapshots.do;
+          desenho.tipoPre = snapshots.tipoPre,
             desenho.preCorUnica = snapshots.preCorUnica,
             desenho.preCorMult1 = snapshots.preCorMult1,
             desenho.preCorMult2 = snapshots.preCorMult2,
             desenho.preCorMult3 = snapshots.preCorMult3,
             desenho.preCorMult4 = snapshots.preCorMult4,
             desenho.tear = snapshots.tear;
-            desenho.categoria = snapshots.categoria;
-            resolve(desenho);
-          }, err => {
-            reject(err)
-          })
-      })
+          desenho.categoria = snapshots.categoria;
+          resolve(desenho);
+        }, err => {
+          reject(err)
+        })
+    })
   }
 
   unsubscribeOnLogOut() {
@@ -125,7 +122,7 @@ export class FirebaseService {
 
   updateTask(taskId, newDesenho) {
     return new Promise<any>((resolve, reject) => {
-      this.afs.collection('desenhos').doc(taskId).set({ 
+      this.afs.collection('desenhos').doc(taskId).set({
         tecido: newDesenho[0].nomeTecido,
         desenho: newDesenho[0].desenho,
         batida: newDesenho[0].tipoBatida,

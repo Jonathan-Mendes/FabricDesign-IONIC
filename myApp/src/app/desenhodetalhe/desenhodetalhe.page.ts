@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { Desenho } from '../desenho'
-import { FirebaseService } from '../firebase.service';
+import { Desenho } from '../model/desenho'
+import { FirebaseService } from '../services/firebase.service';
 @Component({
   selector: 'app-desenhodetalhe',
   templateUrl: './desenhodetalhe.page.html',

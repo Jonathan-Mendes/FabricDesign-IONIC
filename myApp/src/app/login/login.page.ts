@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { FirebaseService } from '../firebase.service';
-import { AuthService } from '../auth.service';
+import { FirebaseService } from '../services/firebase.service';
+import { AuthService } from '../services/auth.service';
 import { AlertController } from '@ionic/angular';
+
 @Component({
   selector: 'app-login',
   templateUrl: './login.page.html',

@@ -2,9 +2,9 @@ import { Component } from '@angular/core';
 import { Platform } from '@ionic/angular';
 import { SplashScreen } from '@ionic-native/splash-screen/ngx';
 import { StatusBar } from '@ionic-native/status-bar/ngx';
-import { User } from './user';
-import { FirebaseService } from './firebase.service';
-import { AuthService } from './auth.service';
+import { User } from './model/user';
+import { FirebaseService } from './services/firebase.service';
+import { AuthService } from './services/auth.service';
 @Component({
   selector: 'app-root',
   templateUrl: 'app.component.html',
@@ -48,6 +48,4 @@ export class AppComponent {
       this.splashScreen.hide();
     });
   }
-
-  
 }

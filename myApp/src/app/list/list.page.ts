@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { FirebaseService } from '../firebase.service';
-import { Desenho } from '../desenho';
+import { FirebaseService } from '../services/firebase.service';
+import { Desenho } from '../model/desenho';
 import { NavController } from '@ionic/angular';
-import { User } from '../user';
-import { AuthService } from '../auth.service';
+import { User } from '../model/user';
+import { AuthService } from '../services/auth.service';
 
 @Component({
   selector: 'app-list',

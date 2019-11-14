@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { NavController } from '@ionic/angular';
 import { Router } from '@angular/router';
-import { FirebaseService } from '../firebase.service';
-import { AuthService } from   '../auth.service';
-import { Desenho } from './../desenho';
-import { User } from './../user';
+import { FirebaseService } from '../services/firebase.service';
+import { AuthService } from   '../services/auth.service';
+import { Desenho } from '../model/desenho';
+import { User } from '../model/user';
 @Component({
   selector: 'app-home',
   templateUrl: 'home.page.html',
@@ -27,11 +27,16 @@ export class HomePage implements OnInit {
   ) { }
  
   ngOnInit() {
+    let b: any;
     this.user = new User; 
     this.Uid = this.auth.getCurrent().uid;
-    this.getName();
+    let snapshot = this.firebase.getName(this.Uid);
+    Promise.resolve(snapshot).then(function (value) {
+       this.admin = value.admin;
+    });
+    console.log(this.admin);
   }
- 
+
   newDesenho(){ 
     this.router.navigate(['newdesenho']);
   }
@@ -39,19 +44,6 @@ export class HomePage implements OnInit {
   search(cat){
     this.query =  this.firebase.search(cat);
     console.log(this.query);
+    console.log(this.admin);
   }
-
-  getName(){
-      return new Promise<User>((resolve, reject) => {
-            this.snapshotChangesSubscription = this.firebase.afs.doc<any>('usuarios/' + this.Uid).valueChanges()
-            .subscribe(snapshots => {
-              this.user.nome = snapshots.nome;
-              this.user.foto = snapshots.foto;
-              this.user.admin = snapshots.admin;
-              resolve(this.user);
-            }, err => {
-              reject(err)
-            })
-        })
-    }
 }
