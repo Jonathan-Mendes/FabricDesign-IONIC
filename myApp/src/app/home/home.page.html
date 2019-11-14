@@ -10,27 +10,64 @@
 </ion-header>
 
 <ion-content>
-  <ion-button expand="block" fill="outline" (click)="search('manta200')">Mantas 2.00 mts
-    <ion-ripple-effect></ion-ripple-effect>
-  </ion-button>
-  <ion-button expand="block" fill="outline" (click)="search('manta140')">Mantas 1.40 mts
-    <ion-ripple-effect></ion-ripple-effect>
-  </ion-button>
-  <ion-button expand="block" fill="outline" (click)="search('cortinas')">Cortinas
-    <ion-ripple-effect></ion-ripple-effect>
-  </ion-button>
-  <ion-button expand="block" fill="outline" (click)="search('tapetes')">Tapetes
-    <ion-ripple-effect></ion-ripple-effect>
-  </ion-button>
-  <ion-button expand="block" fill="outline" (click)="search('passadeiras')">Passadeiras
-    <ion-ripple-effect></ion-ripple-effect>
-  </ion-button>
-  <ion-button expand="block" fill="outline" (click)="search('almofadas')">Almofadas
-    <ion-ripple-effect></ion-ripple-effect>
-  </ion-button>
-  <ion-button expand="block" color="success"  routerLink="/list">Ver Todos
-    <ion-ripple-effect></ion-ripple-effect>
-  </ion-button>
+  <ion-grid>
+    <ion-row>
+      <ion-col size='12'>
+        <ion-button expand="block" fill="outline" size="large" (click)="search('manta200')">Mantas 2.00 mts
+          <ion-ripple-effect></ion-ripple-effect>
+        </ion-button>
+      </ion-col>
+    </ion-row>
+
+    <ion-row>
+      <ion-col size='12'>
+        <ion-button expand="block" fill="outline" size="large" (click)="search('manta140')">Mantas 1.40 mts
+          <ion-ripple-effect></ion-ripple-effect>
+        </ion-button>
+      </ion-col>
+    </ion-row>
+
+    <ion-row>
+      <ion-col size='12'>
+        <ion-button expand="block" fill="outline" size="large" (click)="search('cortinas')">Cortinas
+          <ion-ripple-effect></ion-ripple-effect>
+        </ion-button>
+      </ion-col>
+    </ion-row>
+
+    <ion-row>
+      <ion-col size='12'>
+        <ion-button expand="block" fill="outline" size="large" (click)="search('tapetes')">Tapetes
+          <ion-ripple-effect></ion-ripple-effect>
+        </ion-button>
+      </ion-col>
+    </ion-row>
+
+    <ion-row>
+      <ion-col size='12'>
+        <ion-button expand="block" fill="outline" size="large" (click)="search('passadeiras')">Passadeiras
+          <ion-ripple-effect></ion-ripple-effect>
+        </ion-button>
+      </ion-col>
+    </ion-row>
+
+    <ion-row>
+      <ion-col size='12'>
+        <ion-button expand="block" fill="outline" size="large" (click)="search('almofadas')">Almofadas
+          <ion-ripple-effect></ion-ripple-effect>
+        </ion-button>
+      </ion-col>
+    </ion-row>
+
+    <ion-row>
+      <ion-col size='12'>
+        <ion-button expand="block" fill="outline" size="large" routerLink="/list">Ver Todos
+          <ion-ripple-effect></ion-ripple-effect>
+        </ion-button>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
   <ion-fab vertical="bottom" horizontal="end" slot="fixed">
     <ion-fab-button color="success" (click)="newDesenho()">
       <ion-icon name="md-add"></ion-icon>
