@@ -11,7 +11,8 @@
 
 <ion-content>
     <ion-toolbar>
-        <ion-searchbar color="dark" showCancelButton="focus" cancelButtonText="Custom Cancel"></ion-searchbar>
+        <ion-searchbar color="dark" showCancelButton="focus" cancelButtonText="Custom Cancel"
+            (ioninput)="filterList($event)"></ion-searchbar>
     </ion-toolbar>
 
     <div *ngIf="(desenhos.length) > 0">

@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FirebaseService } from '../services/firebase.service';
 import { Desenho } from '../model/desenho'; 
 import { Router, ActivatedRoute } from '@angular/router';
+import { AlertController } from '@ionic/angular';
 @Component({
   selector: 'app-newdesenho',
   templateUrl: './newdesenho.page.html',
@@ -33,8 +34,12 @@ export class NewdesenhoPage implements OnInit {
   public id: string;
   public snapshotChangesSubscription: any;
 
-  constructor(public firebase: FirebaseService, public rota: Router, public router: ActivatedRoute) {
-  }
+  constructor(
+    public firebase: FirebaseService, 
+    public rota: Router, 
+    public router: ActivatedRoute,
+    public alertController: AlertController
+    ) {}
 
   ngOnInit() {
     this.id = this.router.snapshot.paramMap.get('id');
@@ -44,13 +49,18 @@ export class NewdesenhoPage implements OnInit {
   }
 
   save() {
+    if(this.verificaDesenho(this.desenho)){
+
+    
     if(this.id){
-      this.verificaDesenho(this.desenho);
       this.firebase.updateTask(this.id, this.desenho);
     } else{
       this.firebase.createTask(this.desenho);
     }
     this.rota.navigate(['list']);
+  } else{
+    this.presentAlert();
+  }
   }
 
   cancelar(){
@@ -58,22 +68,26 @@ export class NewdesenhoPage implements OnInit {
   }
 
   verificaDesenho(desenho){
-    if(!desenho[0].nomeTecido){desenho[0].nomeTecido = '';}
-    if(!desenho[0].desenho){desenho[0].desenho = '';}
-    if(!desenho[0].tipoBatida){desenho[0].tipoBatida = '';}
-    if(!desenho[0].batidaUnica){desenho[0].batidaUnica = '';}
-    if(!desenho[0].batidaZ1){desenho[0].batidaZ1 = '';}
-    if(!desenho[0].batidaZ2){desenho[0].batidaZ2 = '';}
-    if(!desenho[0].batidaZ3){desenho[0].batidaZ3 = '';}
-    if(!desenho[0].tipoPre){desenho[0].tipoPre = '';}
-    if(!desenho[0].preCorUnica){desenho[0].preCorUnica = '';}
-    if(!desenho[0].preCorMult1){desenho[0].preCorMult1 = '';}
-    if(!desenho[0].preCorMult2){desenho[0].preCorMult2 = '';}
-    if(!desenho[0].preCorMult3){desenho[0].preCorMult3 = '';}
-    if(!desenho[0].preCorMult4){desenho[0].preCorMult4 = '';}
-    if(!desenho[0].doD){desenho[0].doD = '';}
-    if(!desenho[0].tear){desenho[0].tear = '';}
-    if(!desenho[0].categoria){desenho[0].categoria = '';}
+    let ver = true;
+
+    if(!desenho[0].nomeTecido || desenho[0].nomeTecido == ''){ver = false}
+    if(!desenho[0].desenho || desenho[0].desenho == ''){ver = false}
+    if(!desenho[0].tipoBatida || desenho[0].tipoBatida == ''){ver = false}
+    if((desenho[0].tipoBatida == 'unica') && (!desenho[0].batidaUnica || desenho[0].batidaUnica == '')){ver = false}
+    if((desenho[0].tipoBatida == 'zona') && (!desenho[0].batidaZ1 || desenho[0].batidaZ1 == '')){ver = false}
+    if((desenho[0].tipoBatida == 'zona') && (!desenho[0].batidaZ2 || desenho[0].batidaZ2 == '')){ver = false}
+    if((desenho[0].tipoBatida == 'zona') && (!desenho[0].batidaZ3 || desenho[0].batidaZ3 == '')){ver = false}
+    if(!desenho[0].tipoPre || desenho[0].tipoPre == ''){ver = false}
+    if((desenho[0].tipoPre == 'unica') && (!desenho[0].preCorUnica || desenho[0].preCorUnica == '')){ver = false}
+    if((desenho[0].tipoPre == 'multiplas') && (!desenho[0].preCorMult1 || desenho[0].preCorMult1 == '')){ver = false}
+    if((desenho[0].tipoPre == 'multiplas') && (!desenho[0].preCorMult2 || desenho[0].preCorMult2 == '')){ver = false}
+    if((desenho[0].tipoPre == 'multiplas') && (!desenho[0].preCorMult3 || desenho[0].preCorMult3 == '')){ver = false}
+    if((desenho[0].tipoPre == 'multiplas') && (!desenho[0].preCorMult4 || desenho[0].preCorMult4 == '')){ver = false}
+    if(!desenho[0].doD || desenho[0].doD == ''){ver = false}
+    if(!desenho[0].tear || desenho[0].tear == ''){ver = false}
+    if(!desenho[0].categoria || desenho[0].categoria == ''){ver = false}
+
+    return ver;
   }
 
   getTask(taskId) {
@@ -101,5 +115,16 @@ export class NewdesenhoPage implements OnInit {
           reject(err)
         })
     })
+  }
+
+  async presentAlert() {
+    const alert = await this.alertController.create({
+      header: 'Aviso',
+      // subHeader: 'Subtitle',
+      message: 'Preencha os campos corretamente!',
+      buttons: ['OK']
+    });
+
+    await alert.present();
   }
 }

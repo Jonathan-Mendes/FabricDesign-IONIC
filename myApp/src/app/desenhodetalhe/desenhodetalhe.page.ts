@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Desenho } from '../model/desenho'
 import { FirebaseService } from '../services/firebase.service';
+import { AlertController } from '@ionic/angular';
 @Component({
   selector: 'app-desenhodetalhe',
   templateUrl: './desenhodetalhe.page.html',
@@ -13,12 +14,42 @@ export class DesenhodetalhePage implements OnInit {
   public desenho: Desenho;
   public snapshotChangesSubscription: any;
 
-  constructor(public rota: Router, public router: ActivatedRoute, public firebase: FirebaseService) { }
+  constructor(
+      public rota: Router,
+      public router: ActivatedRoute, 
+      public firebase: FirebaseService,
+      public alertController: AlertController
+  ) { }
 
   ngOnInit() {
     this.desenho = new Desenho;
     this.id = this.router.snapshot.paramMap.get('id');
     this.getTask(this.id);
+  }
+
+  async presentAlertConfirm() {
+    const alert = await this.alertController.create({
+      header: 'Excluir!',
+      message: 'Deseja excluir esse desenho?',
+      buttons: [
+        {
+          text: 'Cancelar',
+          role: 'cancel',
+          cssClass: 'secondary',
+          handler: (blah) => {
+            console.log('Confirm Cancel: blah');
+          }
+        }, {
+          text: 'Confirmar',
+          cssClass: 'success',
+          handler: () => {
+            this.delete();
+          }
+        }
+      ]
+    });
+
+    await alert.present();
   }
 
   delete(){
