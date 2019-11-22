@@ -14,14 +14,14 @@
 
         <ion-item>
             <ion-label position="floating">Nome do Tecido</ion-label>
-            <ion-input [(ngModel)]="desenho[0].nomeTecido"></ion-input>
+            <ion-input [(ngModel)]="newDesenho.nomeTecido"></ion-input>
         </ion-item>
         <ion-item>
             <ion-label position="floating">Desenho</ion-label>
-            <ion-input [(ngModel)]="desenho[0].desenho"></ion-input>
+            <ion-input [(ngModel)]="newDesenho.desenho"></ion-input>
         </ion-item>
 
-        <ion-radio-group [(ngModel)]="desenho[0].tipoBatida">
+        <ion-radio-group [(ngModel)]="newDesenho.tipoBatida">
             <ion-grid>
                 <ion-row>
                     <ion-list-header>
@@ -44,29 +44,29 @@
             </ion-grid>
         </ion-radio-group>
 
-        <ion-item id="batUnica" *ngIf="desenho[0].tipoBatida === 'unica'">
+        <ion-item id="batUnica" *ngIf="newDesenho.tipoBatida === 'unica'">
             <ion-label position="floating">Batida Única</ion-label>
-            <ion-input [(ngModel)]="desenho[0].batidaUnica"></ion-input>
+            <ion-input [(ngModel)]="newDesenho.batidaUnica"></ion-input>
         </ion-item>
 
-        <div *ngIf="desenho[0].tipoBatida === 'zona'">
+        <div *ngIf="newDesenho.tipoBatida === 'zona'">
             <ion-item >
                 <ion-label position="floating">Batida Zona 1</ion-label>
-                <ion-input [(ngModel)]="desenho[0].batidaZ1"></ion-input>
+                <ion-input [(ngModel)]="newDesenho.batidaZ1"></ion-input>
             </ion-item>
 
             <ion-item >
                 <ion-label position="floating">Batida Zona 2</ion-label>
-                <ion-input [(ngModel)]="desenho[0].batidaZ2"></ion-input>
+                <ion-input [(ngModel)]="newDesenho.batidaZ2"></ion-input>
             </ion-item>
 
             <ion-item >
                 <ion-label position="floating">Batida Zona 3</ion-label>
-                <ion-input [(ngModel)]="desenho[0].batidaZ3"></ion-input>
+                <ion-input [(ngModel)]="newDesenho.batidaZ3"></ion-input>
             </ion-item>
         </div>
 
-        <ion-radio-group [(ngModel)]="desenho[0].tipoPre">
+        <ion-radio-group [(ngModel)]="newDesenho.tipoPre">
             <ion-grid>
                 <ion-row>
                     <ion-list-header>
@@ -89,40 +89,40 @@
             </ion-grid>
         </ion-radio-group>
 
-        <ion-item id="batUnica" *ngIf="desenho[0].tipoPre === 'unica'">
+        <ion-item id="batUnica" *ngIf="newDesenho.tipoPre === 'unica'">
             <ion-label position="floating">Cor Única</ion-label>
-            <ion-input [(ngModel)]="desenho[0].preCorUnica"></ion-input>
+            <ion-input [(ngModel)]="newDesenho.preCorUnica"></ion-input>
         </ion-item>
 
-        <div *ngIf="desenho[0].tipoPre === 'multiplas'">
+        <div *ngIf="newDesenho.tipoPre === 'multiplas'">
             <ion-item >
                 <ion-label position="floating">Cor 1</ion-label>
-                <ion-input [(ngModel)]="desenho[0].preCorMult1"></ion-input>
+                <ion-input [(ngModel)]="newDesenho.preCorMult1"></ion-input>
             </ion-item>
 
             <ion-item >
                 <ion-label position="floating">Cor 2</ion-label>
-                <ion-input [(ngModel)]="desenho[0].preCorMult2"></ion-input>
+                <ion-input [(ngModel)]="newDesenho.preCorMult2"></ion-input>
             </ion-item>
 
             <ion-item >
                 <ion-label position="floating">Cor 3</ion-label>
-                <ion-input [(ngModel)]="desenho[0].preCorMult3"></ion-input>
+                <ion-input [(ngModel)]="newDesenho.preCorMult3"></ion-input>
             </ion-item>
             <ion-item >
                 <ion-label position="floating">Cor 4</ion-label>
-                <ion-input [(ngModel)]="desenho[0].preCorMult4"></ion-input>
+                <ion-input [(ngModel)]="newDesenho.preCorMult4"></ion-input>
             </ion-item>
         </div>
 
         <ion-item>
             <ion-label position="floating">Do</ion-label>
-            <ion-input [(ngModel)]="desenho[0].doD"></ion-input>
+            <ion-input [(ngModel)]="newDesenho.doD"></ion-input>
         </ion-item>
 
         <ion-item>
             <ion-label>Tear</ion-label>
-            <ion-select placeholder="Escolha"[(ngModel)]="desenho[0].tear">
+            <ion-select placeholder="Escolha"[(ngModel)]="newDesenho.tear">
                 <ion-select-option value="1">1</ion-select-option>
                 <ion-select-option value="2">2</ion-select-option>
                 <ion-select-option value="3">3</ion-select-option>
@@ -138,7 +138,7 @@
 
         <ion-item>
             <ion-label>Categoria</ion-label>
-            <ion-select placeholder="Escolha" [(ngModel)]="desenho[0].categoria">
+            <ion-select placeholder="Escolha" [(ngModel)]="newDesenho.categoria">
                 <ion-select-option value="manta200">Manta 2.00 mts</ion-select-option>
                 <ion-select-option value="manta140">Manta 1.40 mts</ion-select-option>
                 <ion-select-option value="cortinas">Cortinas</ion-select-option>

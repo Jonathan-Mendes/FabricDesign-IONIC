@@ -116,32 +116,29 @@ export class FirebaseService {
     return desenhos;
   }
 
-  getTask(taskId) {
-    let desenho = new Desenho;
-    return new Promise<Desenho>((resolve, reject) => {
-      this.snapshotChangesSubscription = this.afs.doc<any>('desenhos/' + taskId).valueChanges()
-        .subscribe(snapshots => {
-          desenho.nomeTecido = snapshots.tecido;
-          desenho.desenho = snapshots.desenho;
-          desenho.tipoBatida = snapshots.batida;
-          desenho.batidaUnica = snapshots.batidaUnica;
-          desenho.batidaZ1 = snapshots.batidaZ1;
-          desenho.batidaZ2 = snapshots.batidaZ2;
-          desenho.batidaZ3 = snapshots.batidaZ3;
-          desenho.doD = snapshots.do;
-          desenho.tipoPre = snapshots.tipoPre,
-          desenho.preCorUnica = snapshots.preCorUnica,
-          desenho.preCorMult1 = snapshots.preCorMult1,
-          desenho.preCorMult2 = snapshots.preCorMult2,
-          desenho.preCorMult3 = snapshots.preCorMult3,
-          desenho.preCorMult4 = snapshots.preCorMult4,
-          desenho.tear = snapshots.tear;
-          desenho.categoria = snapshots.categoria;
-          resolve(desenho);
-        }, err => {
-          reject(err)
-        })
-    })
+  getTask(taskId){
+    let desenho = new Desenho();
+      firebase.firestore().collection('desenhos').doc(taskId).get().then(function(doc){
+        if(doc.exists){
+          desenho.nomeTecido = doc.data().tecido;
+          desenho.desenho = doc.data().desenho;
+          desenho.tipoBatida = doc.data().batida;
+          desenho.batidaUnica = doc.data().batidaUnica;
+          desenho.batidaZ1 = doc.data().batidaZ1;
+          desenho.batidaZ2 = doc.data().batidaZ2;
+          desenho.batidaZ3 = doc.data().batidaZ3;
+          desenho.doD = doc.data().do;
+          desenho.tipoPre = doc.data().tipoPre;
+          desenho.preCorUnica = doc.data().preCorUnica;
+          desenho.preCorMult1 = doc.data().preCorMult1;
+          desenho.preCorMult2 = doc.data().preCorMult2;
+          desenho.preCorMult3 = doc.data().preCorMult3;
+          desenho.preCorMult4 = doc.data().preCorMult4;
+          desenho.tear = doc.data().tear;
+          desenho.categoria = doc.data().categoria;
+        }
+      })
+      return desenho;
   }
 
   unsubscribeOnLogOut() {
@@ -152,23 +149,23 @@ export class FirebaseService {
   updateTask(taskId, newDesenho) {
     return new Promise<any>((resolve, reject) => {
       this.afs.collection('desenhos').doc(taskId).set({
-        tecido: newDesenho[0].nomeTecido,
-        desenho: newDesenho[0].desenho,
-        batida: newDesenho[0].tipoBatida,
-        batidaUnica: newDesenho[0].batidaUnica,
-        batidaZ1: newDesenho[0].batidaZ1,
-        batidaZ2: newDesenho[0].batidaZ3,
-        batidaZ3: newDesenho[0].batidaZ3,
-        tipoPre: newDesenho[0].tipoPre,
-        preCorUnica: newDesenho[0].preCorUnica,
-        preCorMult1: newDesenho[0].preCorMult1,
-        preCorMult2: newDesenho[0].preCorMult2,
-        preCorMult3: newDesenho[0].preCorMult3,
-        preCorMult4: newDesenho[0].preCorMult4,
-        do: newDesenho[0].doD,
-        pre: newDesenho[0].pre,
-        tear: newDesenho[0].tear,
-        categoria: newDesenho[0].categoria
+        tecido: newDesenho.nomeTecido,
+        desenho: newDesenho.desenho,
+        batida: newDesenho.tipoBatida,
+        batidaUnica: newDesenho.batidaUnica,
+        batidaZ1: newDesenho.batidaZ1,
+        batidaZ2: newDesenho.batidaZ3,
+        batidaZ3: newDesenho.batidaZ3,
+        tipoPre: newDesenho.tipoPre,
+        preCorUnica: newDesenho.preCorUnica,
+        preCorMult1: newDesenho.preCorMult1,
+        preCorMult2: newDesenho.preCorMult2,
+        preCorMult3: newDesenho.preCorMult3,
+        preCorMult4: newDesenho.preCorMult4,
+        do: newDesenho.doD,
+        pre: newDesenho.pre,
+        tear: newDesenho.tear,
+        categoria: newDesenho.categoria
       })
         .then(
           res => resolve(res),
@@ -188,26 +185,25 @@ export class FirebaseService {
   }
 
   createTask(newDesenho) {
-    console.log(newDesenho[0]);
+    console.log(newDesenho)
     return new Promise<any>((resolve, reject) => {
       this.afs.collection('desenhos').add({
-        tecido: newDesenho[0].nomeTecido,
-        desenho: newDesenho[0].desenho,
-        batida: newDesenho[0].tipoBatida,
-        batidaUnica: newDesenho[0].batidaUnica,
-        batidaZ1: newDesenho[0].batidaZ1,
-        batidaZ2: newDesenho[0].batidaZ3,
-        batidaZ3: newDesenho[0].batidaZ3,
-        tipoPre: newDesenho[0].tipoPre,
-        preCorUnica: newDesenho[0].preCorUnica,
-        preCorMult1: newDesenho[0].preCorMult1,
-        preCorMult2: newDesenho[0].preCorMult2,
-        preCorMult3: newDesenho[0].preCorMult3,
-        preCorMult4: newDesenho[0].preCorMult4,
-        do: newDesenho[0].doD,
-        pre: newDesenho[0].pre,
-        tear: newDesenho[0].tear,
-        categoria: newDesenho[0].categoria
+        tecido: newDesenho.nomeTecido,
+        desenho: newDesenho.desenho,
+        batida: newDesenho.tipoBatida,
+        batidaUnica: newDesenho.batidaUnica,
+        batidaZ1: newDesenho.batidaZ1,
+        batidaZ2: newDesenho.batidaZ3,
+        batidaZ3: newDesenho.batidaZ3,
+        tipoPre: newDesenho.tipoPre,
+        preCorUnica: newDesenho.preCorUnica,
+        preCorMult1: newDesenho.preCorMult1,
+        preCorMult2: newDesenho.preCorMult2,
+        preCorMult3: newDesenho.preCorMult3,
+        preCorMult4: newDesenho.preCorMult4,
+        do: newDesenho.doD,
+        tear: newDesenho.tear,
+        categoria: newDesenho.categoria
       }).then(
         res => resolve(res),
         err => reject(err)
