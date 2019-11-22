@@ -147,6 +147,7 @@ export class FirebaseService {
   }
 
   updateTask(taskId, newDesenho) {
+    console.log(newDesenho)
     return new Promise<any>((resolve, reject) => {
       this.afs.collection('desenhos').doc(taskId).set({
         tecido: newDesenho.nomeTecido,
@@ -163,7 +164,6 @@ export class FirebaseService {
         preCorMult3: newDesenho.preCorMult3,
         preCorMult4: newDesenho.preCorMult4,
         do: newDesenho.doD,
-        pre: newDesenho.pre,
         tear: newDesenho.tear,
         categoria: newDesenho.categoria
       })
