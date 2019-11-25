@@ -3,19 +3,23 @@
   overflow: hidden;
 }
 
-.toolbar-background {
-  background-color: #500001;
+.color{
+  color:  #9b0000 !important;;
+}
+
+.colorToolbar{
+  color:  #e5ccb8 !important;
+}
+
+#toolbar{
+  --ion-background-color: #9b0000 !important;
 }
 
 .colorButton{
-  color: #9b0000 !important;
+  --ion-text-color: #9b0000 !important;
   font-weight: bold;
 }
 
 .color{
   color:  #e5ccb8 !important;;
-}
-
-ion-button {
-  color: #9b0000 !important;
 }
