@@ -14,6 +14,7 @@ import { AngularFireDatabaseModule } from '@angular/fire/database';
 import { AngularFirestoreModule } from 'angularfire2/firestore';
 import { FormsModule } from '@angular/forms';
 import { AngularFireAuthModule } from '@angular/fire/auth';
+import { Camera } from '@ionic-native/camera/ngx';
 
 export const firebaseConfig = {
     apiKey: "AIzaSyATI1g7NIpyUaZZ_AGmpYxVawBm4HsfSLs",
@@ -42,6 +43,7 @@ export const firebaseConfig = {
   providers: [
     StatusBar,
     SplashScreen,
+    Camera,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }
   ],
   bootstrap: [AppComponent]

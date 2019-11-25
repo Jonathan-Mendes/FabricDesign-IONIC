@@ -34,7 +34,7 @@ export class ListPage implements OnInit {
     console.log(this.desenhos);
     this.user = new User;
     // this.Uid = this.auth.getCurrent().uid;
-    this.getName();
+    // this.getName();
   }
 
   newDesenho() {
@@ -46,8 +46,8 @@ export class ListPage implements OnInit {
   }
 
   ffilterList(evt) {
+    console.log(evt);
     this.initializeItems();
-
     const searchTerm = evt.srcElement.value;
 
     if (!searchTerm) {
@@ -64,18 +64,18 @@ export class ListPage implements OnInit {
     });
   }
 
-  getName() {
-    return new Promise<User>((resolve, reject) => {
-      this.snapshotChangesSubscription = this.firebase.afs.doc<any>('usuarios/' + this.Uid).valueChanges()
-        .subscribe(snapshots => {
-          this.user.nome = snapshots.nome;
-          this.user.foto = snapshots.foto;
-          this.user.admin = snapshots.admin;
-          resolve(this.user);
-        }, err => {
-          reject(err)
-        })
-    })
-  }
+  // getName() {
+  //   return new Promise<User>((resolve, reject) => {
+  //     this.snapshotChangesSubscription = this.firebase.afs.doc<any>('usuarios/' + this.Uid).valueChanges()
+  //       .subscribe(snapshots => {
+  //         this.user.nome = snapshots.nome;
+  //         this.user.foto = snapshots.foto;
+  //         this.user.admin = snapshots.admin;
+  //         resolve(this.user);
+  //       }, err => {
+  //         reject(err)
+  //       })
+  //   })
+  // }
 
 }
