@@ -1,3 +1,9 @@
 .color{
-    color:  #e5ccb8 !important;;
+    color:  #9b0000 !important;
+    font-weight: bold;
 }
+
+#toolbar{
+    --ion-background-color: #9b0000 !important;
+    --ion-text-color: #fffef9 !important;
+ }

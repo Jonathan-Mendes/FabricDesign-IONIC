@@ -1,5 +1,5 @@
 <ion-header>
-  <ion-toolbar id="toolbar" class="colorToolbar">
+  <ion-toolbar class="toolbar">
     <ion-buttons slot="start">
       <ion-menu-button></ion-menu-button>
     </ion-buttons>
@@ -11,8 +11,8 @@
 
 <ion-content>
   <ion-card class="card">
-    <ion-card-header class="color">
-      <ion-card-title class="ion-text-uppercase ion-text-center color">
+    <ion-card-header class="backgroudColorTitle">
+      <ion-card-title class="ion-text-uppercase ion-text-center colorTitle">
         {{desenho.nomeTecido}}
       </ion-card-title>
     </ion-card-header>
@@ -21,8 +21,8 @@
       <ion-label class="ion-text-end ion-text-uppercase">{{desenho.desenho}}</ion-label>
     </ion-item>
 
-    <ion-item class="color">
-      <ion-label class="ion-text-uppercase ion-text-center">Batida</ion-label>
+    <ion-item class="toolbar">
+      <ion-label class="ion-text-uppercase ion-text-center fontBold">Batida</ion-label>
     </ion-item>
 
 
@@ -48,8 +48,8 @@
       </ion-item>
     </div>
 
-    <ion-item class="color">
-      <ion-label class="ion-text-uppercase ion-text-center">Do</ion-label>
+    <ion-item class="toolbar">
+      <ion-label class="ion-text-uppercase ion-text-center fontBold">Do</ion-label>
     </ion-item>
 
     <ion-item class="color">
@@ -57,8 +57,8 @@
       <ion-label class="ion-text-end">{{desenho.doD}}</ion-label>
     </ion-item>
 
-    <ion-item class="color">
-      <ion-label class="ion-text-uppercase ion-text-center">Pré</ion-label>
+    <ion-item class="toolbar">
+      <ion-label class="ion-text-uppercase ion-text-center fontBold">Pré</ion-label>
     </ion-item>
 
     <div *ngIf="desenho.tipoPre === 'multiplas'">
@@ -87,8 +87,8 @@
       </ion-item>
     </div>
 
-    <ion-item class="color">
-      <ion-label class="ion-text-uppercase ion-text-center">Tear</ion-label>
+    <ion-item class="toolbar">
+      <ion-label class="ion-text-uppercase ion-text-center fontBold">Tear</ion-label>
     </ion-item>
 
     <ion-item class="color">
@@ -97,8 +97,8 @@
     </ion-item>
 
 
-    <ion-item class="color">
-      <ion-label class="ion-text-uppercase ion-text-center">Categoria</ion-label>
+    <ion-item class="toolbar">
+      <ion-label class="ion-text-uppercase ion-text-center fontBold">Categoria</ion-label>
     </ion-item>
 
     <ion-item class="color">

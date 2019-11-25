@@ -1,5 +1,5 @@
 <ion-header>
-    <ion-toolbar class="color">
+    <ion-toolbar id="toolbar">
         <ion-buttons slot="start">
             <ion-menu-button></ion-menu-button>
         </ion-buttons>
@@ -11,7 +11,7 @@
 
 <ion-content>
     <ion-toolbar>
-        <ion-searchbar color="light" showCancelButton="focus" cancelButtonText="Custom Cancel"
+        <ion-searchbar id="searchbar color" showCancelButton="focus" cancelButtonText="Custom Cancel"
             (ioninput)="filterList($event)"></ion-searchbar>
     <!-- <ion-searchbar (ioninput)="filterList($event)"></!-->
     </ion-toolbar>

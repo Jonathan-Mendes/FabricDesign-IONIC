@@ -3,13 +3,24 @@
 }
 
 .color{
-    color:  #9b0000 !important;;
+    color:  #9b0000 !important;
+    font-weight: bold;
 }
 
-.colorToolbar{
-    color:  #e5ccb8 !important;
+.fontBold{
+    font-weight: bold 
 }
 
-#toolbar{
+.toolbar{
     --ion-background-color: #9b0000 !important;
+    --ion-text-color: #fffef9 !important;
+}
+
+.backgroudColorTitle{
+    background-color: #9b0000 !important;
+}
+
+.colorTitle{
+    color:  #fffef9 !important;
+    font-weight: bold;
 }

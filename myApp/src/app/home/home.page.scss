@@ -7,19 +7,19 @@
   color:  #9b0000 !important;;
 }
 
-.colorToolbar{
-  color:  #e5ccb8 !important;
-}
+// .colorToolbar{
+//   color:  #fffef9 !important;
+// }
 
 #toolbar{
   --ion-background-color: #9b0000 !important;
+  --ion-text-color: #fffef9 !important;
 }
 
-.colorButton{
-  --ion-text-color: #9b0000 !important;
-  font-weight: bold;
+ion-button {
+  --color: #fffef9;
 }
 
-.color{
-  color:  #e5ccb8 !important;;
+.colorButton {
+  --background:  #9b0000 !important;
 }
