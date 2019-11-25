@@ -1,5 +1,5 @@
 <ion-header>
-    <ion-toolbar>
+    <ion-toolbar class="color">
         <ion-buttons slot="start">
             <ion-menu-button></ion-menu-button>
         </ion-buttons>
@@ -16,11 +16,11 @@
             <ion-button color="secondary" expand="block" (click)="takePicture()"><ion-icon name="md-camera"></ion-icon></ion-button>
         </ion-item>
 
-        <ion-item>
+        <ion-item  class="color">
             <ion-label position="floating">Nome do Tecido</ion-label>
             <ion-input [(ngModel)]="newDesenho.nomeTecido"></ion-input>
         </ion-item>
-        <ion-item>
+        <ion-item  class="color">
             <ion-label position="floating">Desenho</ion-label>
             <ion-input [(ngModel)]="newDesenho.desenho"></ion-input>
         </ion-item>
@@ -28,18 +28,18 @@
         <ion-radio-group [(ngModel)]="newDesenho.tipoBatida">
             <ion-grid>
                 <ion-row>
-                    <ion-list-header>
+                    <ion-list-header  class="color">
                         Tipo de Batida
                     </ion-list-header>
 
                     <ion-col size="6">
-                        <ion-item>
+                        <ion-item  class="color">
                             <ion-label>Única</ion-label>
                             <ion-radio value="unica"></ion-radio>
                         </ion-item>
                     </ion-col>
                     <ion-col size="6">
-                        <ion-item>
+                        <ion-item  class="color">
                             <ion-label>Por Zona</ion-label>
                             <ion-radio value="zona"></ion-radio>
                         </ion-item>
@@ -48,23 +48,23 @@
             </ion-grid>
         </ion-radio-group>
 
-        <ion-item id="batUnica" *ngIf="newDesenho.tipoBatida === 'unica'">
+        <ion-item id="batUnica" *ngIf="newDesenho.tipoBatida === 'unica'" class="color">
             <ion-label position="floating">Batida Única</ion-label>
             <ion-input [(ngModel)]="newDesenho.batidaUnica"></ion-input>
         </ion-item>
 
         <div *ngIf="newDesenho.tipoBatida === 'zona'">
-            <ion-item>
+            <ion-item class="color">
                 <ion-label position="floating">Batida Zona 1</ion-label>
                 <ion-input [(ngModel)]="newDesenho.batidaZ1"></ion-input>
             </ion-item>
 
-            <ion-item>
+            <ion-item class="color">
                 <ion-label position="floating">Batida Zona 2</ion-label>
                 <ion-input [(ngModel)]="newDesenho.batidaZ2"></ion-input>
             </ion-item>
 
-            <ion-item>
+            <ion-item class="color">
                 <ion-label position="floating">Batida Zona 3</ion-label>
                 <ion-input [(ngModel)]="newDesenho.batidaZ3"></ion-input>
             </ion-item>
@@ -73,18 +73,18 @@
         <ion-radio-group [(ngModel)]="newDesenho.tipoPre">
             <ion-grid>
                 <ion-row>
-                    <ion-list-header>
+                    <ion-list-header class="color">
                         Pré
                     </ion-list-header>
 
                     <ion-col size="6">
-                        <ion-item>
+                        <ion-item class="color" class="color">
                             <ion-label>Cor Única</ion-label>
                             <ion-radio value="unica"></ion-radio>
                         </ion-item>
                     </ion-col>
                     <ion-col size="6">
-                        <ion-item>
+                        <ion-item class="color" class="color">
                             <ion-label>Cor Multiplas</ion-label>
                             <ion-radio value="multiplas"></ion-radio>
                         </ion-item>
@@ -93,54 +93,55 @@
             </ion-grid>
         </ion-radio-group>
 
-        <ion-item id="batUnica" *ngIf="newDesenho.tipoPre === 'unica'">
+        <ion-item id="batUnica" *ngIf="newDesenho.tipoPre === 'unica'" class="color">
             <ion-label position="floating">Cor Única</ion-label>
             <ion-input [(ngModel)]="newDesenho.preCorUnica"></ion-input>
         </ion-item>
 
         <div *ngIf="newDesenho.tipoPre === 'multiplas'">
-            <ion-item>
+            <ion-item class="color">
                 <ion-label position="floating">Cor 1</ion-label>
                 <ion-input [(ngModel)]="newDesenho.preCorMult1"></ion-input>
             </ion-item>
 
-            <ion-item>
+            <ion-item class="color">
                 <ion-label position="floating">Cor 2</ion-label>
                 <ion-input [(ngModel)]="newDesenho.preCorMult2"></ion-input>
             </ion-item>
 
-            <ion-item>
+            <ion-item class="color">
                 <ion-label position="floating">Cor 3</ion-label>
                 <ion-input [(ngModel)]="newDesenho.preCorMult3"></ion-input>
             </ion-item>
-            <ion-item>
+            
+            <ion-item class="color">
                 <ion-label position="floating">Cor 4</ion-label>
                 <ion-input [(ngModel)]="newDesenho.preCorMult4"></ion-input>
             </ion-item>
         </div>
 
-        <ion-item>
+        <ion-item class="color">
             <ion-label position="floating">Do</ion-label>
             <ion-input [(ngModel)]="newDesenho.doD"></ion-input>
         </ion-item>
 
-        <ion-item>
+        <ion-item class="color">
             <ion-label>Tear</ion-label>
             <ion-select placeholder="Escolha" [(ngModel)]="newDesenho.tear">
-                <ion-select-option value="1">1</ion-select-option>
-                <ion-select-option value="2">2</ion-select-option>
-                <ion-select-option value="3">3</ion-select-option>
-                <ion-select-option value="4">4</ion-select-option>
-                <ion-select-option value="5">5</ion-select-option>
-                <ion-select-option value="6">6</ion-select-option>
-                <ion-select-option value="7">7</ion-select-option>
-                <ion-select-option value="8">8</ion-select-option>
-                <ion-select-option value="9">9</ion-select-option>
-                <ion-select-option value="10">10</ion-select-option>
+                <ion-select-option value="1" class="color">1</ion-select-option>
+                <ion-select-option value="2" class="color">2</ion-select-option>
+                <ion-select-option value="3" class="color">3</ion-select-option>
+                <ion-select-option value="4" class="color">4</ion-select-option>
+                <ion-select-option value="5" class="color">5</ion-select-option>
+                <ion-select-option value="6" class="color">6</ion-select-option>
+                <ion-select-option value="7" class="color">7</ion-select-option>
+                <ion-select-option value="8" class="color">8</ion-select-option>
+                <ion-select-option value="9" class="color">9</ion-select-option>
+                <ion-select-option value="10" class="color">10</ion-select-option>
             </ion-select>
         </ion-item>
 
-        <ion-item>
+        <ion-item class="color">
             <ion-label>Categoria</ion-label>
             <ion-select placeholder="Escolha" [(ngModel)]="newDesenho.categoria">
                 <ion-select-option value="manta200">Manta 2.00 mts</ion-select-option>
