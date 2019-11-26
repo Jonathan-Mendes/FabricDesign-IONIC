@@ -14,8 +14,8 @@ import { AuthService } from '../services/auth.service';
 export class SearchPage implements OnInit {
 
   public desenhos: Desenho[] = [];
+  public allDesenhos: Desenho[] = [];
   public admin: boolean;
-  // public cat: string;
   public user: User;
   public snapshotChangesSubscription: any;
 
@@ -29,7 +29,7 @@ export class SearchPage implements OnInit {
 
   ngOnInit() {
     this.desenhos = this.firebase.getTasks();
-    console.log(this.desenhos);
+    this.allDesenhos = this.desenhos;
     let cat = this.router.snapshot.paramMap.get('cat');
     this.desenhos =  this.firebase.search(cat);
   }
@@ -37,4 +37,16 @@ export class SearchPage implements OnInit {
   newDesenho() {
     this.rota.navigate(['newdesenho']);
   }
+
+  filterList(evt) {
+    console.log(evt.target.value)
+      const val = evt.target.value;
+      if (val && val.trim() != '') {
+        this.desenhos = this.desenhos.filter((veiculo) => {
+          return (veiculo.nomeTecido.toLowerCase().indexOf(val.toLowerCase()) > -1);
+        })
+      } else {
+        this.desenhos = this.allDesenhos;
+      }
+    }
 }

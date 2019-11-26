@@ -14,12 +14,11 @@ import { AuthService } from '../services/auth.service';
 export class ListPage implements OnInit {
 
   public desenhos: Desenho[] = [];
+  public allDesenhos: Desenho[] = [];;
   public admin: boolean;
   public Uid: string;
   public user: User;
   public snapshotChangesSubscription: any;
-  // public goalList: any[];
-  public loadedGoalList: any[];
 
   constructor(
     public router: Router,
@@ -30,8 +29,7 @@ export class ListPage implements OnInit {
 
   ngOnInit() {
     this.desenhos = this.firebase.getTasks();
-    this.loadedGoalList = this.desenhos;
-    console.log(this.desenhos);
+    this.allDesenhos = this.desenhos;
     this.user = new User;
     // this.Uid = this.auth.getCurrent().uid;
     // this.getName();
@@ -41,41 +39,19 @@ export class ListPage implements OnInit {
     this.router.navigate(['newdesenho']);
   }
 
-  initializeItems(): void {
-    this.desenhos = this.loadedGoalList;
-  }
-
-  ffilterList(evt) {
-    console.log(evt);
-    this.initializeItems();
-    const searchTerm = evt.srcElement.value;
-
-    if (!searchTerm) {
-      return;
-    }
-
-    this.desenhos = this.desenhos.filter(currentGoal => {
-      if (currentGoal.nomeTecido && searchTerm) {
-        if (currentGoal.nomeTecido.toLowerCase().indexOf(searchTerm.toLowerCase()) > -1) {
-          return true;
-        }
-        return false;
-      }
-    });
-  }
-
-  // getName() {
-  //   return new Promise<User>((resolve, reject) => {
-  //     this.snapshotChangesSubscription = this.firebase.afs.doc<any>('usuarios/' + this.Uid).valueChanges()
-  //       .subscribe(snapshots => {
-  //         this.user.nome = snapshots.nome;
-  //         this.user.foto = snapshots.foto;
-  //         this.user.admin = snapshots.admin;
-  //         resolve(this.user);
-  //       }, err => {
-  //         reject(err)
-  //       })
-  //   })
+  // initializeItems(): void {
+  //   this.desenhos = this.loadedGoalList;
   // }
 
+  filterList(evt) {
+    console.log(evt.target.value)
+      const val = evt.target.value;
+      if (val && val.trim() != '') {
+        this.desenhos = this.desenhos.filter((veiculo) => {
+          return (veiculo.nomeTecido.toLowerCase().indexOf(val.toLowerCase()) > -1);
+        })
+      } else {
+        this.desenhos = this.allDesenhos;
+      }
+    }
 }
