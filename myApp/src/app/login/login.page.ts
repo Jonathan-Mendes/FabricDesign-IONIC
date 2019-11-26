@@ -3,7 +3,7 @@ import { Router } from '@angular/router';
 import { FirebaseService } from '../services/firebase.service';
 import { AuthService } from '../services/auth.service';
 import { AlertController } from '@ionic/angular';
-
+import * as firebase from 'firebase/app';
 @Component({
   selector: 'app-login',
   templateUrl: './login.page.html',
@@ -12,10 +12,10 @@ import { AlertController } from '@ionic/angular';
 export class LoginPage implements OnInit {
 
   public current: any;
-  public user = [{
+  public user = {
     email: '',
     password: ''
-  }];
+  };
 
   constructor(
     public router: Router,
@@ -29,19 +29,26 @@ export class LoginPage implements OnInit {
   }
 
   sigIn() {
-    this.auth.doLogin(this.user)
-    this.current = this.auth.getCurrent();
-    if (this.current) {
-      this.router.navigate(['home']);
-    } else {
-      // this.presentAlertConfirm();
+    if(this.user.email != '' && this.user.password != ''){
+      this.login()
+    } else{
+        this.presentAlertConfirm('Preencha os campos corretamente!');
     }
+
+    // 'Usuário ou senha incorreta!'
+    // this.auth.doLogin(this.user)
+    // this.current = this.auth.getCurrent();
+    // if (this.current) {
+    //   this.router.navigate(['home']);
+    // } else {
+    //   // this.presentAlertConfirm();
+    // }
   }
 
-  async presentAlertConfirm() {
+  async presentAlertConfirm(message) {
     const alert = await this.alertController.create({
       header: 'Aviso',
-      message: 'Usuário ou senha incorreta!',
+      message: message,
       buttons: [
         {
           text: 'Ok',
@@ -55,5 +62,13 @@ export class LoginPage implements OnInit {
     await alert.present();
   }
 
+  login(){
+    return new Promise<any>((resolve, reject) => {
+      firebase.auth().signInWithEmailAndPassword(this.user.email, this.user.password)
+      .then(
+        res => this.router.navigate(['home']),
+        err => this.presentAlertConfirm('Usuário ou senha inválida!'))
+    })
+   }
 
 }
