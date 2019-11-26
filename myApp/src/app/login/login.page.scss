@@ -1,24 +1,42 @@
-.content{
-    // height: 100%;
-    // display: flex;
-    // align-items: center !important;
-    // justify-content: center;
-}
+@import url('https://fonts.googleapis.com/css?family=Baskervville&display=swap');
 
-.grid{
-    // height: 100%;
-}
+// .content{
+//     // height: 100%;
+//     // display: flex;
+//     // align-items: center !important;
+//     // justify-content: center;
+// }
+
+// .grid{
+//     // height: 100%;
+// }
 
 .imgLogo{
     display: flex;
     justify-content: center;
 }
 
+.textLogo{
+    font-family: 'Baskervville', serif;
+    color: #e5ccb8;
+    margin-top: -15px;
+    margin-bottom: 40px;
+    font-size: 45px !important;
+    font-weight: bold;
+}
+
 .color{
     color:  #fffef9 !important;;
 }
 
+.colorItem{
+    --ion-background-color: none !important;
+    // border-bottom: 1px solid #e5ccb8;
+}
+
 .login{
-    --ion-background-color: #9b0000 !important;
+    // background-image: linear-gradient(to bottom, white, purple) !important;
+    --ion-background-color: linear-gradient(to bottom, #4f0000, #9b0000) !important;
+    // --ion-background-color: #9b0000 !important;
     --ion-text-color: #fffef9 !important;
 }
