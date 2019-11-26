@@ -18,16 +18,14 @@ export class FirebaseService {
     public afAuth: AngularFireAuth
   ) { }
 
-  async getName(Uid) {
-    return new Promise<any>((resolve, reject) => {
-      this.snapshotChangesSubscription = this.afs.doc<any>('usuarios/' + Uid).valueChanges()
-        .subscribe(snapshots => {
-          resolve(snapshots);
-        }, err => {
-          reject(err)
-        })
-    })
-
+  async getUser(Uid) {
+    let user = new User();
+    firebase.firestore().collection('usuarios').doc(Uid).get().then(function(doc){
+      user.nome = doc.data().nome;
+      user.foto = doc.data().foto;
+      user.admin = doc.data().admin;
+  });
+      return user;
   }
 
   searchInput(query): Array<Desenho> {

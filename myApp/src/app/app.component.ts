@@ -1,10 +1,10 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Platform } from '@ionic/angular';
 import { SplashScreen } from '@ionic-native/splash-screen/ngx';
 import { StatusBar } from '@ionic-native/status-bar/ngx';
-import { User } from './model/user';
 import { FirebaseService } from './services/firebase.service';
 import { AuthService } from './services/auth.service';
+import { User } from './model/user';
 @Component({
   selector: 'app-root',
   templateUrl: 'app.component.html',
@@ -13,6 +13,7 @@ import { AuthService } from './services/auth.service';
 export class AppComponent {
   public snapshotChangesSubscription: any;
   public Uid: any;
+  public user: User;
 
   public appPages = [
     {
@@ -40,6 +41,13 @@ export class AppComponent {
     public auth: AuthService,
   ) {
     this.initializeApp();
+  }
+
+  OnInit(){
+    // this.Uid = this.auth.getCurrent;
+    // console.log(this.Uid)
+    // this.user = new User();
+    // // this.user = this.firebase.getUser();
   }
 
   initializeApp() {

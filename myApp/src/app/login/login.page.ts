@@ -34,15 +34,6 @@ export class LoginPage implements OnInit {
     } else{
         this.presentAlertConfirm('Preencha os campos corretamente!');
     }
-
-    // 'Usuário ou senha incorreta!'
-    // this.auth.doLogin(this.user)
-    // this.current = this.auth.getCurrent();
-    // if (this.current) {
-    //   this.router.navigate(['home']);
-    // } else {
-    //   // this.presentAlertConfirm();
-    // }
   }
 
   async presentAlertConfirm(message) {
