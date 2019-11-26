@@ -70,5 +70,4 @@ export class LoginPage implements OnInit {
         err => this.presentAlertConfirm('Usuário ou senha inválida!'))
     })
    }
-
 }
