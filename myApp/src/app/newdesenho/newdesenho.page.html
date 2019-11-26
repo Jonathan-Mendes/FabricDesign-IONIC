@@ -11,16 +11,21 @@
 
 <ion-content>
     <ion-list>
-        <img src="{{ photo }}" />
         <ion-item>
-            <ion-button color="secondary" expand="block" (click)="takePicture()"><ion-icon name="md-camera"></ion-icon></ion-button>
+            <img src="{{ photo }}" width="100%" height="200px" />
         </ion-item>
+
+        <ion-button color="red" expand="block" (click)="takePicture()">
+                <ion-icon name="md-camera" class="icon"></ion-icon>
+                Inserir Foto
+            <ion-ripple-effect></ion-ripple-effect>
+        </ion-button>
 
         <ion-item>
             <ion-label position="floating" class="color">Nome do Tecido</ion-label>
             <ion-input [(ngModel)]="newDesenho.nomeTecido"></ion-input>
         </ion-item>
-        <ion-item  class="color">
+        <ion-item>
             <ion-label position="floating" class="color">Desenho</ion-label>
             <ion-input [(ngModel)]="newDesenho.desenho"></ion-input>
         </ion-item>
@@ -28,12 +33,12 @@
         <ion-radio-group [(ngModel)]="newDesenho.tipoBatida">
             <ion-grid>
                 <ion-row>
-                    <ion-list-header class="color"> 
+                    <ion-list-header class="color">
                         Tipo de Batida
                     </ion-list-header>
 
                     <ion-col size="6">
-                        <ion-item  class="color">
+                        <ion-item class="color">
                             <ion-label class="color">Única</ion-label>
                             <ion-radio value="unica"></ion-radio>
                         </ion-item>
@@ -85,7 +90,7 @@
                     </ion-col>
                     <ion-col size="6">
                         <ion-item>
-                            <ion-label  class="color">Cor Multiplas</ion-label>
+                            <ion-label class="color">Cor Multiplas</ion-label>
                             <ion-radio value="multiplas"></ion-radio>
                         </ion-item>
                     </ion-col>
@@ -113,9 +118,9 @@
                 <ion-label position="floating" class="color">Cor 3</ion-label>
                 <ion-input [(ngModel)]="newDesenho.preCorMult3"></ion-input>
             </ion-item>
-            
+
             <ion-item>
-            <ion-label position="floating" class="color">Cor 4</ion-label>
+                <ion-label position="floating" class="color">Cor 4</ion-label>
                 <ion-input [(ngModel)]="newDesenho.preCorMult4"></ion-input>
             </ion-item>
         </div>

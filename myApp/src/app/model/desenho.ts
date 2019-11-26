@@ -17,8 +17,26 @@ export class Desenho {
     public _doD: string;
     public _tear: string;
     public _categoria: string;
-    
-    constructor(id?: string, nomeTecido?: string, desenho?: string, tipoBatida?: string, batidaUnica?: string, batidaZ1?: string, batidaZ2?: string, batidaZ3?: string, doD?: string, tipoPre?: string, preCorUnica?: string, preCorMult1?: string, preCorMult2?: string, preCorMult3?: string, preCorMult4?: string, tear?: string, categoria?: string) {
+    private _photo: string;
+
+    constructor(id?: string,
+        nomeTecido?: string,
+        desenho?: string,
+        tipoBatida?: string,
+        batidaUnica?: string,
+        batidaZ1?: string,
+        batidaZ2?: string,
+        batidaZ3?: string,
+        doD?: string,
+        tipoPre?: string,
+        preCorUnica?: string,
+        preCorMult1?: string,
+        preCorMult2?: string, 
+        preCorMult3?: string, 
+        preCorMult4?: string, 
+        tear?: string,
+        categoria?: string,
+        photo?: string) {
         this.id = id;
         this.nomeTecido = nomeTecido;
         this.desenho = desenho;
@@ -36,6 +54,7 @@ export class Desenho {
         this.preCorMult4 = preCorMult4;
         this.tear = tear;
         this.categoria = categoria;
+        this.photo = photo;
     }
 
     public get tipoPre(): string {
@@ -139,5 +158,11 @@ export class Desenho {
     }
     public set categoria(value: string) {
         this._categoria = value;
+    }
+    public get photo(): string {
+        return this._photo;
+    }
+    public set photo(value: string) {
+        this._photo = value;
     }
 }

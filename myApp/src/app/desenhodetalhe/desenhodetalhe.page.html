@@ -12,10 +12,14 @@
 <ion-content>
   <ion-card class="card">
     <ion-card-header class="backgroudColorTitle">
+      <!-- <ion-item>
+          <img src="{{ photo }}" width="100%" height="200px" />
+      </ion-item> -->
       <ion-card-title class="ion-text-uppercase ion-text-center colorTitle">
         {{desenho.nomeTecido}}
       </ion-card-title>
     </ion-card-header>
+
     <ion-item class="color">
       <ion-label class="ion-text-uppercase">Desenho</ion-label>
       <ion-label class="ion-text-end ion-text-uppercase">{{desenho.desenho}}</ion-label>
@@ -82,7 +86,7 @@
 
     <div *ngIf="desenho.tipoPre === 'unica'">
       <ion-item class="color">
-        <ion-label class="ion-text-uppercase">Única</ion-label>
+        <ion-label class="ion-text-uppercase">Cor Única</ion-label>
         <ion-label class="ion-text-end">{{desenho.preCorUnica}}</ion-label>
       </ion-item>
     </div>
@@ -107,24 +111,13 @@
     </ion-item>
   </ion-card>
 
-  <!-- <ion-fab vertical="bottom" horizontal="end" slot="fixed">
-    <ion-fab-button color="tertiary">
-      <ion-icon name="md-create" (click)="edit()"></ion-icon>
-    </ion-fab-button>
-  </ion-fab>
-  <ion-fab vertical="bottom" horizontal="start" slot="fixed">
-    <ion-fab-button color="danger" (click)="presentAlertConfirm()">
-      <ion-icon name="md-trash"></ion-icon>
-    </ion-fab-button>
-  </ion-fab> -->
-
   <ion-fab vertical="bottom" horizontal="end" slot="fixed">
-    <ion-fab-button class="fabColor"><ion-icon name="clipboard"></ion-icon></ion-fab-button>
+    <ion-fab-button color="red"><ion-icon name="clipboard"></ion-icon></ion-fab-button>
     <ion-fab-list side="start">
       <ion-fab-button color="danger" (click)="presentAlertConfirm()">
         <ion-icon name="md-trash"></ion-icon>
       </ion-fab-button>
-      <ion-fab-button color="tertiary">
+      <ion-fab-button color="secondary">
         <ion-icon name="md-create" (click)="edit()"></ion-icon>
       </ion-fab-button>
     </ion-fab-list>

@@ -14,7 +14,8 @@ export class DesenhodetalhePage implements OnInit {
   public desenho: Desenho;
   public desenhos: Desenho[] = [];
   public snapshotChangesSubscription: any;
-
+  public photo: string = '';
+  
   constructor(
       public rota: Router,
       public router: ActivatedRoute, 
@@ -23,6 +24,7 @@ export class DesenhodetalhePage implements OnInit {
   ) { }
 
   ngOnInit() {
+    this.photo = 'https://firebasestorage.googleapis.com/v0/b/fabric-design-145ac.appspot.com/o/Photo%20System%2Fphoto_default.jpg?alt=media&token=a5024c20-e5c6-44be-bb9a-46bbdf5557fc';
     this.desenho = new Desenho;
     this.id = this.router.snapshot.paramMap.get('id');
     this.desenho = (this.firebase.getTask(this.id));

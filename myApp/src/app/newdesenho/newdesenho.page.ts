@@ -40,8 +40,8 @@ export class NewdesenhoPage implements OnInit {
 
     this.camera.getPicture(options)
       .then((imageData) => {
-        let base64image = 'data:image/jpeg;base64,' + imageData;
-        this.photo = base64image;
+        let image = 'data:image/jpeg;base64,' + imageData;
+        this.photo = image;
  
       }, (error) => {
         console.error(error);
@@ -52,6 +52,8 @@ export class NewdesenhoPage implements OnInit {
   }
 
   ngOnInit() {
+
+    this.photo = 'https://firebasestorage.googleapis.com/v0/b/fabric-design-145ac.appspot.com/o/Photo%20System%2Fphoto_default.jpg?alt=media&token=a5024c20-e5c6-44be-bb9a-46bbdf5557fc';
     this.newDesenho = new Desenho();
     this.id = this.router.snapshot.paramMap.get('id');
     if (this.id) {
@@ -66,6 +68,7 @@ export class NewdesenhoPage implements OnInit {
         this.firebase.updateTask(this.id, this.newDesenho);
       } else {
         this.firebase.createTask(this.newDesenho);
+        // this.firebase.uploadImage(this.photo);
       }
       this.rota.navigate(['list']);
     } else {

@@ -11,13 +11,13 @@
 
 <ion-content>
     <ion-toolbar>
-        <ion-searchbar id="searchbar color" showCancelButton="focus" cancelButtonText="Custom Cancel" (ionInput)="filterList($event)"></ion-searchbar>
+        <ion-searchbar color="red" id="searchbar color" showCancelButton="focus" cancelButtonText="Custom Cancel" (ionInput)="filterList($event)"></ion-searchbar>
     </ion-toolbar>
 
     <div *ngIf="(desenhos.length) > 0">
         <ion-list *ngFor="let desenho of desenhos">
             <ion-item [href]="'/desenhodetalhe/' + desenho.id" routerDirection="forward">
-                <ion-label class="color">{{desenho.nomeTecido}}</ion-label>
+                <ion-label color="red" class="bold">{{desenho.nomeTecido}}</ion-label>
             </ion-item>
         </ion-list>
     </div>
