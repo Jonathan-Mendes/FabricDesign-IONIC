@@ -32,6 +32,11 @@ export class AppComponent {
       title: 'Novo Desenho',
       url: '/newdesenho',
       icon: 'ios-create'
+    },
+    {
+      title: 'Configurações',
+      url: '/config',
+      icon: 'ios-settings' 
     }
   ];
 
