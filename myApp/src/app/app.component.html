@@ -14,7 +14,7 @@
                 src={{user.foto}}>
             </ion-avatar>
             <ion-label class="color">{{ user.nome }}</ion-label>
-            <span class="logOut" routerDirection="'root'" routerLink="/login"><ion-icon name="log-out" id="iconLogOut"></ion-icon>Sair</span>
+            <span class="logOut" (click)="logOut()"><ion-icon name="log-out" id="iconLogOut"></ion-icon>Sair</span>
           </ion-item>
         </ion-list>
         <ion-list>

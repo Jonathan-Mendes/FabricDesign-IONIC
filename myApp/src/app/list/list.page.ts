@@ -39,12 +39,11 @@ export class ListPage implements OnInit {
     this.router.navigate(['newdesenho']);
   }
 
-  // initializeItems(): void {
-  //   this.desenhos = this.loadedGoalList;
-  // }
+  navigate(id: string){
+    this.router.navigate(['desenhodetalhe/' + id]);
+  }
 
   filterList(evt) {
-    console.log(evt.target.value)
       const val = evt.target.value;
       if (val && val.trim() != '') {
         this.desenhos = this.desenhos.filter((veiculo) => {

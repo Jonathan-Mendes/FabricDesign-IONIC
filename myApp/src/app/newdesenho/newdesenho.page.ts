@@ -57,7 +57,6 @@ export class NewdesenhoPage implements OnInit {
     this.newDesenho = new Desenho();
     this.id = this.router.snapshot.paramMap.get('id');
     if (this.id) {
-      // this.getTask(this.id);
       this.newDesenho = this.firebase.getTask(this.id);
     }
   }

@@ -38,8 +38,11 @@ export class SearchPage implements OnInit {
     this.rota.navigate(['newdesenho']);
   }
 
+  navigate(id: string){
+    this.rota.navigate(['desenhodetalhe/' + id]);
+  }
+
   filterList(evt) {
-    console.log(evt.target.value)
       const val = evt.target.value;
       if (val && val.trim() != '') {
         this.desenhos = this.desenhos.filter((veiculo) => {
