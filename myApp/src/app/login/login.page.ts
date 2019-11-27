@@ -2,8 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { FirebaseService } from '../services/firebase.service';
 import { AuthService } from '../services/auth.service';
-import { AlertController } from '@ionic/angular';
+import { AlertController, MenuController } from '@ionic/angular';
 import * as firebase from 'firebase/app';
+import { AppComponent } from '../app.component';
 @Component({
   selector: 'app-login',
   templateUrl: './login.page.html',
@@ -21,10 +22,13 @@ export class LoginPage implements OnInit {
     public router: Router,
     public firebase: FirebaseService,
     public auth: AuthService, 
-    public alertController: AlertController
+    public alertController: AlertController,
+    public menu: MenuController,
+    public app: AppComponent
     ) {}
   
   ngOnInit() {
+    this.menu.enable(false);
     this.auth.doLogout();
   }
 
@@ -57,7 +61,11 @@ export class LoginPage implements OnInit {
     return new Promise<any>((resolve, reject) => {
       firebase.auth().signInWithEmailAndPassword(this.user.email, this.user.password)
       .then(
-        res => this.router.navigate(['home']),
+        res => {
+          this.router.navigate(['home']);
+          this.menu.enable(true);
+          this.app.setUser();
+      },
         err => this.presentAlertConfirm('Usuário ou senha inválida!'))
     })
    }

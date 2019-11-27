@@ -11,9 +11,9 @@
           <ion-item>
             <ion-avatar slot="start">
               <img
-                src="https://firebasestorage.googleapis.com/v0/b/fabric-design-145ac.appspot.com/o/Photo%20Users%2Fdefault-perfil.jpg?alt=media&token=7e71e16c-60c2-49ee-bb62-beb95337a0ff">
+                src={{user.foto}}>
             </ion-avatar>
-            <ion-label>{{ user }}</ion-label>
+            <ion-label class="color">{{ user.nome }}</ion-label>
             <span class="logOut" routerDirection="'root'" routerLink="/login"><ion-icon name="log-out" id="iconLogOut"></ion-icon>Sair</span>
           </ion-item>
         </ion-list>

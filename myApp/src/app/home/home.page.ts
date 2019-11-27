@@ -5,6 +5,7 @@ import { FirebaseService } from '../services/firebase.service';
 import { AuthService } from   '../services/auth.service';
 import { Desenho } from '../model/desenho';
 import { User } from '../model/user';
+import { AppComponent } from '../app.component';
 @Component({
   selector: 'app-home',
   templateUrl: 'home.page.html',
@@ -23,18 +24,13 @@ export class HomePage implements OnInit {
     public navCtrl: NavController,
     public router: Router, 
     public firebase: FirebaseService,
-    public auth: AuthService
-  ) { }
+    public auth: AuthService,
+    public app: AppComponent
+  ) {}
  
   ngOnInit() {
-    let b: any;
-    this.user = new User; 
-    // this.Uid = this.auth.getCurrent().uid;
-    // let snapshot = this.firebase.getName(this.Uid);
-    // console.log(snapshot);
-    // Promise.resolve(snapshot).then(function (value) {
-    //    this.user.nome = value.nome;
-    // });
+    this.admin = this.app.getAdmin();
+    console.log(this.admin)
   }
 
   newDesenho(){ 

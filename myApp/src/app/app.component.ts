@@ -1,10 +1,12 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { Platform } from '@ionic/angular';
 import { SplashScreen } from '@ionic-native/splash-screen/ngx';
 import { StatusBar } from '@ionic-native/status-bar/ngx';
 import { FirebaseService } from './services/firebase.service';
 import { AuthService } from './services/auth.service';
 import { User } from './model/user';
+import * as firebase from 'firebase/app';
+
 @Component({
   selector: 'app-root',
   templateUrl: 'app.component.html',
@@ -43,17 +45,26 @@ export class AppComponent {
     this.initializeApp();
   }
 
-  OnInit(){
-    // this.Uid = this.auth.getCurrent;
-    // console.log(this.Uid)
-    // this.user = new User();
-    // // this.user = this.firebase.getUser();
-  }
-
   initializeApp() {
     this.platform.ready().then(() => {
       this.statusBar.styleDefault();
       this.splashScreen.hide();
+      // this.user = new User();
     });
   }
+
+  async setUser(){
+    this.user = new User();
+    this.user = await this.firebase.getUser(this.auth.getCurrent().uid);
+    console.log(this.user)
+    }
+
+  getAdmin(){
+    console.log(this.user.admin)
+    if(this.user.admin){
+      return true;
+    }else{
+      return false;
+    }
+  }    
 }

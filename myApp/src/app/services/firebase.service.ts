@@ -18,9 +18,9 @@ export class FirebaseService {
     public afAuth: AngularFireAuth
   ) { }
 
-  async getUser(Uid) {
+  async getUser(Uid): Promise<User> {
     let user = new User();
-    firebase.firestore().collection('usuarios').doc(Uid).get().then(function(doc){
+    await firebase.firestore().collection('usuarios').doc(Uid).get().then(function(doc){
       user.nome = doc.data().nome;
       user.foto = doc.data().foto;
       user.admin = doc.data().admin;

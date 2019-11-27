@@ -28,6 +28,7 @@ export class DesenhodetalhePage implements OnInit {
     this.desenho = new Desenho;
     this.id = this.router.snapshot.paramMap.get('id');
     this.desenho = (this.firebase.getTask(this.id));
+    console.log(this.desenho)
   }
 
   async presentAlertConfirm() {
