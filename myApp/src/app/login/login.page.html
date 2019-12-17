@@ -18,6 +18,9 @@
           <ion-col size="12">
           <ion-item class="colorItem">
               <!-- <ion-label position="stacked" class="color">E-mail</ion-label> -->
+              <ion-label class="ion-text-wrap">
+                  <ion-icon name="md-mail" class="icon"></ion-icon>
+                </ion-label> 
               <ion-input placeholder="email@email.com" type="email" [(ngModel)]="user.email"></ion-input>
             </ion-item>
           </ion-col>
@@ -25,7 +28,9 @@
         <ion-row>
           <ion-col size="12">
             <ion-item class="colorItem">
-              <!-- <ion-label position="stacked" class="color">Senha</ion-label> -->
+                <ion-label class="ion-text-wrap">
+                    <ion-icon name="md-lock" class="icon"></ion-icon>
+                  </ion-label>
               <ion-input
                 [type]="isTextFieldType ? 'text' : 'password'"
                 placeholder="password"
