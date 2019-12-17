@@ -17,13 +17,13 @@ import { AngularFireAuthModule } from '@angular/fire/auth';
 import { Camera } from '@ionic-native/camera/ngx';
 
 export const firebaseConfig = {
-    apiKey: "AIzaSyATI1g7NIpyUaZZ_AGmpYxVawBm4HsfSLs",
-    authDomain: "fabric-design-145ac.firebaseapp.com",
-    databaseURL: "https://fabric-design-145ac.firebaseio.com",
-    projectId: "fabric-design-145ac",
-    storageBucket: "fabric-design-145ac.appspot.com",
-    messagingSenderId: "775612015608",
-    appId: "1:775612015608:web:a3d1e942bca69c2059ec0d"
+    apiKey: "AIzaSyA0Mln56EYkCtZ9ZKQRc94oe9lGwHTvfcM",
+    authDomain: "fabric-design-49e0a.firebaseapp.com",
+    databaseURL: "https://fabric-design-49e0a.firebaseio.com",
+    projectId: "fabric-design-49e0a",
+    storageBucket: "fabric-design-49e0a.appspot.com",
+    messagingSenderId: "902713470456",
+    appId: "1:902713470456:web:51da5ab1c7280687b9ba0d"
 };
 
 @NgModule({
