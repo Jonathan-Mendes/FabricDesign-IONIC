@@ -11,7 +11,8 @@ import { AppComponent } from '../app.component';
   styleUrls: ['./login.page.scss'],
 })
 export class LoginPage implements OnInit {
-
+  
+  isTextFieldType: boolean;
   public current: any;
   public user = {
     email: '',
@@ -69,4 +70,8 @@ export class LoginPage implements OnInit {
         err => this.presentAlertConfirm('Usuário ou senha inválida!'))
     })
    }
+
+   togglePasswordFieldType(){
+    this.isTextFieldType = !this.isTextFieldType;
+  }
 }

@@ -9,6 +9,9 @@
     </ion-toolbar>
 </ion-header>
 
+<!-- <ng-container *ngIf="newDesenho.nomeTecido != null || newDesenho.nomeTecido = ''; then carregado; else carregando"></ng-container> -->
+
+<!-- <ng-template #carregado> -->
 <ion-content>
     <ion-list>
         <ion-item>
@@ -170,3 +173,12 @@
         </ion-grid>
     </ion-list>
 </ion-content>
+<!-- </ng-template>
+
+<ng-template #carregando>
+    <ion-content>
+      <div class="center">
+        <ion-spinner name="crescent" color="red" class="spinner"></ion-spinner>
+      </div>
+    </ion-content>
+  </ng-template> -->

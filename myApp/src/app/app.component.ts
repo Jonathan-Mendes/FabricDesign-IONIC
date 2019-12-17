@@ -1,11 +1,11 @@
 import { Component } from '@angular/core';
-import { Platform } from '@ionic/angular';
+import { Platform, MenuController } from '@ionic/angular';
 import { SplashScreen } from '@ionic-native/splash-screen/ngx';
 import { StatusBar } from '@ionic-native/status-bar/ngx';
 import { FirebaseService } from './services/firebase.service';
 import { AuthService } from './services/auth.service';
 import { User } from './model/user';
-import * as firebase from 'firebase/app';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-root',
@@ -32,6 +32,11 @@ export class AppComponent {
       title: 'Novo Desenho',
       url: '/newdesenho',
       icon: 'ios-create'
+    },
+    {
+      title: 'Configurações',
+      url: '/config',
+      icon: 'ios-settings' 
     }
   ];
 
@@ -41,6 +46,8 @@ export class AppComponent {
     private statusBar: StatusBar,
     public firebase: FirebaseService,
     public auth: AuthService,
+    public menu: MenuController,
+    public router : Router
   ) {
     this.initializeApp();
   }
@@ -49,14 +56,12 @@ export class AppComponent {
     this.platform.ready().then(() => {
       this.statusBar.styleDefault();
       this.splashScreen.hide();
-      // this.user = new User();
     });
   }
 
   async setUser(){
     this.user = new User();
     this.user = await this.firebase.getUser(this.auth.getCurrent().uid);
-    console.log(this.user)
     }
 
   getAdmin(){
@@ -66,5 +71,10 @@ export class AppComponent {
     }else{
       return false;
     }
-  }    
+  }  
+  
+  logOut(){
+    this.menu.enable(false);
+    this.router.navigate(['login']);
+  }
 }

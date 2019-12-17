@@ -17,7 +17,7 @@
 
   <div *ngIf="(desenhos.length) > 0">
     <ion-list *ngFor="let desenho of desenhos">
-      <ion-item [href]="'/desenhodetalhe/' + desenho.id" routerDirection="forward">
+      <ion-item (click)="navigate(desenho.id)">
         <ion-label class="bold" color="red">{{desenho.nomeTecido}}</ion-label>
       </ion-item>
     </ion-list>
